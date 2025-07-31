@@ -1,0 +1,4390 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19315b86bbf826b4ca854ca9ac18e01e, type: 3}
+  m_Name: YeokDatabase
+  m_EditorClassIdentifier: 
+  allYeokData:
+  - combination: 0000000000000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 6
+    totalScore: 7
+  - combination: 0100000001000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 6
+    totalScore: 7
+  - combination: 0200000002000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 6
+    totalScore: 7
+  - combination: 0300000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 9
+    totalScore: 10
+  - combination: 0400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 9
+    totalScore: 10
+  - combination: 0500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 10
+    totalScore: 11
+  - combination: 000000000000000000000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 6
+    totalScore: 10
+  - combination: 000000000000000001000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 000000000000000002000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 000000000000000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 000000000000000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 000000000000000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 000000000100000001000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 000000000100000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 6
+    totalScore: 9
+  - combination: 000000000200000002000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 000000000300000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 000000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 000000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 010000000100000001000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 6
+    totalScore: 10
+  - combination: 010000000100000002000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 010000000100000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 010000000100000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 010000000100000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 010000000200000002000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 010000000300000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 010000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 010000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 020000000200000002000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 6
+    totalScore: 10
+  - combination: 020000000200000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 020000000200000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 020000000200000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 020000000300000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 020000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 020000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 030000000300000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 030000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 7
+    totalScore: 8
+  - combination: 030000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 8
+    totalScore: 9
+  - combination: 030000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 7
+    totalScore: 8
+  - combination: 030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 14
+    totalScore: 17
+  - combination: 030000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 8
+    totalScore: 9
+  - combination: 040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 040000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 8
+    totalScore: 9
+  - combination: 040000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 8
+    totalScore: 9
+  - combination: 050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 00000000000000000000000000000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 6
+    totalScore: 19
+  - combination: 00000000000000000000000001000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 00000000000000000000000002000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 00000000000000000000000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 00000000000000000000000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 00000000000000000000000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 00000000000000000100000001000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 00000000000000000100000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 00000000000000000100000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 00000000000000000100000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 00000000000000000100000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 00000000000000000200000002000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 00000000000000000200000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 00000000000000000200000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 00000000000000000200000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 00000000000000000300000003000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 00000000000000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 00000000000000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 00000000000000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 00000000000000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 00000000000000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 3
+    totalScore: 5
+  - combination: 00000000010000000100000001000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 00000000010000000100000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 00000000010000000100000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 00000000010000000100000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 00000000010000000100000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 00000000010000000200000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 00000000010000000200000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 6
+    totalScore: 9
+  - combination: 00000000010000000200000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 6
+    totalScore: 9
+  - combination: 00000000010000000200000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 00000000010000000300000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 00000000010000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 00000000010000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 00000000020000000200000002000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 00000000020000000200000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 00000000020000000200000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 00000000020000000200000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 00000000020000000300000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 00000000020000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 00000000020000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 00000000030000000300000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 00000000030000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 00000000030000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 00000000030000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 00000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 11
+    totalScore: 14
+  - combination: 00000000030000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 00000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 00000000040000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 00000000040000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 00000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 01000000010000000100000001000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 6
+    totalScore: 19
+  - combination: 01000000010000000100000002000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 01000000010000000100000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 01000000010000000100000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 01000000010000000100000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 01000000010000000200000002000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 01000000010000000200000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 01000000010000000200000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 01000000010000000200000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 01000000010000000300000003000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 01000000010000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 01000000010000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 01000000010000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 01000000010000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 01000000010000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 3
+    totalScore: 5
+  - combination: 01000000020000000200000002000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 01000000020000000200000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 01000000020000000200000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 01000000020000000200000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 01000000020000000300000003000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 01000000020000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 2
+    totalScore: 3
+  - combination: 01000000020000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 3
+    totalScore: 4
+  - combination: 01000000030000000300000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 01000000030000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 01000000030000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 01000000030000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 01000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 11
+    totalScore: 14
+  - combination: 01000000030000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 01000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 01000000040000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 01000000040000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 01000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 02000000020000000200000002000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 6
+    totalScore: 19
+  - combination: 02000000020000000200000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 02000000020000000200000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 02000000020000000200000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 02000000020000000300000003000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 02000000020000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 02000000020000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 02000000020000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 02000000020000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 02000000020000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 3
+    totalScore: 5
+  - combination: 02000000030000000300000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 02000000030000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 02000000030000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 02000000030000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 02000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 11
+    totalScore: 14
+  - combination: 02000000030000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 02000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 02000000040000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 02000000040000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 02000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 03000000030000000300000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 9
+    totalScore: 22
+  - combination: 03000000030000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 7
+    totalScore: 11
+  - combination: 03000000030000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 8
+    totalScore: 12
+  - combination: 03000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 7
+    totalScore: 9
+  - combination: 03000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 03000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 8
+    totalScore: 10
+  - combination: 03000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 7
+    totalScore: 11
+  - combination: 03000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 03000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 03000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 8
+    totalScore: 12
+  - combination: 04000000040000000400000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 9
+    totalScore: 22
+  - combination: 04000000040000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 8
+    totalScore: 12
+  - combination: 04000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 8
+    totalScore: 10
+  - combination: 04000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 8
+    totalScore: 12
+  - combination: 05000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 0000000000000000000000000000000000000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 6
+    totalScore: 33
+  - combination: 0000000000000000000000000000000001000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0000000000000000000000000000000002000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0000000000000000000000000000000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0000000000000000000000000000000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0000000000000000000000000000000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 3
+    totalScore: 16
+  - combination: 0000000000000000000000000100000001000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0000000000000000000000000100000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000000000000000000000100000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0000000000000000000000000100000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0000000000000000000000000100000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 0000000000000000000000000200000002000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0000000000000000000000000200000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0000000000000000000000000200000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0000000000000000000000000200000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 0000000000000000000000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0000000000000000000000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 4
+    totalScore: 8
+  - combination: 0000000000000000000000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0000000000000000000000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0000000000000000000000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0000000000000000000000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 3
+    totalScore: 9
+  - combination: 0000000000000000010000000100000001000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0000000000000000010000000100000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000000000000010000000100000003000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0000000000000000010000000100000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0000000000000000010000000100000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 3
+    totalScore: 5
+  - combination: 0000000000000000010000000200000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000000000000010000000200000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000000000000010000000200000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000000000000010000000200000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 3
+    totalScore: 6
+  - combination: 0000000000000000010000000300000003000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0000000000000000010000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 0000000000000000010000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000000000000010000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0000000000000000010000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000000000000010000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 3
+    totalScore: 5
+  - combination: 0000000000000000020000000200000002000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0000000000000000020000000200000003000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0000000000000000020000000200000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0000000000000000020000000200000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 3
+    totalScore: 5
+  - combination: 0000000000000000020000000300000003000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0000000000000000020000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 0000000000000000020000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000000000000020000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0000000000000000020000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000000000000020000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 3
+    totalScore: 5
+  - combination: 0000000000000000030000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0000000000000000030000000300000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 4
+    totalScore: 6
+  - combination: 0000000000000000030000000300000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0000000000000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 4
+    totalScore: 6
+  - combination: 0000000000000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 0000000000000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0000000000000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0000000000000000040000000400000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0000000000000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0000000000000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 3
+    totalScore: 9
+  - combination: 0000000001000000010000000100000001000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0000000001000000010000000100000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000001000000010000000100000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0000000001000000010000000100000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0000000001000000010000000100000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 0000000001000000010000000200000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000001000000010000000200000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000001000000010000000200000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000001000000010000000200000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 3
+    totalScore: 6
+  - combination: 0000000001000000010000000300000003000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0000000001000000010000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 0000000001000000010000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000001000000010000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0000000001000000010000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000001000000010000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 3
+    totalScore: 5
+  - combination: 0000000001000000020000000200000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000001000000020000000200000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000001000000020000000200000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000001000000020000000200000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 3
+    totalScore: 6
+  - combination: 0000000001000000020000000300000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000001000000020000000300000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 8
+    totalScore: 11
+  - combination: 0000000001000000020000000300000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 9
+    totalScore: 12
+  - combination: 0000000001000000020000000400000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 2
+    totalScore: 5
+  - combination: 0000000001000000020000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 9
+    totalScore: 12
+  - combination: 0000000001000000020000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 3
+    totalScore: 6
+  - combination: 0000000001000000030000000300000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0000000001000000030000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 0000000001000000030000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000001000000030000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 0000000001000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 11
+    totalScore: 14
+  - combination: 0000000001000000030000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000001000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0000000001000000040000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000001000000040000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000001000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 0000000002000000020000000200000002000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0000000002000000020000000200000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0000000002000000020000000200000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0000000002000000020000000200000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 0000000002000000020000000300000003000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0000000002000000020000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 0000000002000000020000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000002000000020000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0000000002000000020000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000002000000020000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 3
+    totalScore: 5
+  - combination: 0000000002000000030000000300000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0000000002000000030000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 0000000002000000030000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000002000000030000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 0000000002000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 11
+    totalScore: 14
+  - combination: 0000000002000000030000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000002000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0000000002000000040000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000002000000040000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0000000002000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 0000000003000000030000000300000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0000000003000000030000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 4
+    totalScore: 8
+  - combination: 0000000003000000030000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0000000003000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 4
+    totalScore: 6
+  - combination: 0000000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 0000000003000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0000000003000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 4
+    totalScore: 8
+  - combination: 0000000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 0000000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 0000000003000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0000000004000000040000000400000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0000000004000000040000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0000000004000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0000000004000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0000000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 3
+    totalScore: 16
+  - combination: 0100000001000000010000000100000001000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 6
+    totalScore: 33
+  - combination: 0100000001000000010000000100000002000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0100000001000000010000000100000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0100000001000000010000000100000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0100000001000000010000000100000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 3
+    totalScore: 16
+  - combination: 0100000001000000010000000200000002000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0100000001000000010000000200000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0100000001000000010000000200000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0100000001000000010000000200000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 0100000001000000010000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0100000001000000010000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 4
+    totalScore: 8
+  - combination: 0100000001000000010000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0100000001000000010000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0100000001000000010000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0100000001000000010000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 3
+    totalScore: 9
+  - combination: 0100000001000000020000000200000002000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0100000001000000020000000200000003000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0100000001000000020000000200000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0100000001000000020000000200000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 3
+    totalScore: 5
+  - combination: 0100000001000000020000000300000003000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0100000001000000020000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 0100000001000000020000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0100000001000000020000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0100000001000000020000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0100000001000000020000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 3
+    totalScore: 5
+  - combination: 0100000001000000030000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0100000001000000030000000300000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 4
+    totalScore: 6
+  - combination: 0100000001000000030000000300000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0100000001000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 4
+    totalScore: 6
+  - combination: 0100000001000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 0100000001000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0100000001000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0100000001000000040000000400000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0100000001000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0100000001000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 3
+    totalScore: 9
+  - combination: 0100000002000000020000000200000002000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0100000002000000020000000200000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0100000002000000020000000200000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0100000002000000020000000200000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 0100000002000000020000000300000003000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0100000002000000020000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 0100000002000000020000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0100000002000000020000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 2
+    totalScore: 4
+  - combination: 0100000002000000020000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0100000002000000020000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 3
+    totalScore: 5
+  - combination: 0100000002000000030000000300000003000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0100000002000000030000000300000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 0100000002000000030000000300000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0100000002000000030000000400000004000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 4
+    totalScore: 5
+  - combination: 0100000002000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 11
+    totalScore: 14
+  - combination: 0100000002000000030000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0100000002000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 2
+    totalScore: 6
+  - combination: 0100000002000000040000000400000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0100000002000000040000000500000005000000
+    foundationYeok: 0
+    baseScore: 1
+    bonusScore: 5
+    totalScore: 6
+  - combination: 0100000002000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 3
+    totalScore: 7
+  - combination: 0100000003000000030000000300000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0100000003000000030000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 4
+    totalScore: 8
+  - combination: 0100000003000000030000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0100000003000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 4
+    totalScore: 6
+  - combination: 0100000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 0100000003000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0100000003000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 4
+    totalScore: 8
+  - combination: 0100000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 0100000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 0100000003000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0100000004000000040000000400000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0100000004000000040000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0100000004000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0100000004000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0100000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 3
+    totalScore: 16
+  - combination: 0200000002000000020000000200000002000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 6
+    totalScore: 33
+  - combination: 0200000002000000020000000200000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0200000002000000020000000200000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0200000002000000020000000200000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 3
+    totalScore: 16
+  - combination: 0200000002000000020000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0200000002000000020000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 4
+    totalScore: 8
+  - combination: 0200000002000000020000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0200000002000000020000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0200000002000000020000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0200000002000000020000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 3
+    totalScore: 9
+  - combination: 0200000002000000030000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0200000002000000030000000300000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 4
+    totalScore: 6
+  - combination: 0200000002000000030000000300000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0200000002000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 4
+    totalScore: 6
+  - combination: 0200000002000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 0200000002000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0200000002000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 2
+    totalScore: 8
+  - combination: 0200000002000000040000000400000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0200000002000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0200000002000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 3
+    totalScore: 9
+  - combination: 0200000003000000030000000300000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0200000003000000030000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 4
+    totalScore: 8
+  - combination: 0200000003000000030000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0200000003000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 4
+    totalScore: 6
+  - combination: 0200000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 0200000003000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0200000003000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 4
+    totalScore: 8
+  - combination: 0200000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 0200000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 0200000003000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0200000004000000040000000400000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 2
+    totalScore: 15
+  - combination: 0200000004000000040000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0200000004000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 5
+    totalScore: 7
+  - combination: 0200000004000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 5
+    totalScore: 9
+  - combination: 0200000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 3
+    totalScore: 16
+  - combination: 0300000003000000030000000300000003000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 9
+    totalScore: 36
+  - combination: 0300000003000000030000000300000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 0300000003000000030000000300000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 0300000003000000030000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 0300000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 0300000003000000030000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 0300000003000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 0300000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 0300000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 0300000003000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 0300000004000000040000000400000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 0300000004000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 0300000004000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 0300000004000000050000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 0300000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 0400000004000000040000000400000004000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 9
+    totalScore: 36
+  - combination: 0400000004000000040000000400000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 0400000004000000040000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 0400000004000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 0400000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 0500000005000000050000000500000005000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 10
+    totalScore: 37
+  - combination: 000000000000000000000000000000000000000000000000
+    foundationYeok: 12
+    baseScore: 42
+    bonusScore: 11
+    totalScore: 53
+  - combination: 000000000000000000000000000000000000000001000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 000000000000000000000000000000000000000002000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 000000000000000000000000000000000000000003000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 000000000000000000000000000000000000000004000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 000000000000000000000000000000000000000005000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 8
+    totalScore: 35
+  - combination: 000000000000000000000000000000000100000001000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 000000000000000000000000000000000100000002000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000000000000000000000000000100000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000000000000000000000000000100000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000000000000000000000000000100000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 000000000000000000000000000000000200000002000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 000000000000000000000000000000000200000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000000000000000000000000000200000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000000000000000000000000000200000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 000000000000000000000000000000000300000003000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 000000000000000000000000000000000300000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 9
+    totalScore: 22
+  - combination: 000000000000000000000000000000000300000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 000000000000000000000000000000000400000004000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 000000000000000000000000000000000400000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 000000000000000000000000000000000500000005000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 8
+    totalScore: 28
+  - combination: 000000000000000000000000010000000100000001000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 7
+    totalScore: 31
+  - combination: 000000000000000000000000010000000100000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000000000000000000010000000100000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000000000000010000000100000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000000000000010000000100000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 000000000000000000000000010000000200000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000000000000000000010000000200000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000000000000000000010000000200000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000000000000000000010000000200000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 8
+    totalScore: 11
+  - combination: 000000000000000000000000010000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000000000000010000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 000000000000000000000000010000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000000000000000000010000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000000000000010000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000000000000000000010000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 000000000000000000000000020000000200000002000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 7
+    totalScore: 31
+  - combination: 000000000000000000000000020000000200000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000000000000020000000200000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000000000000020000000200000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 000000000000000000000000020000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000000000000020000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 000000000000000000000000020000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000000000000000000020000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000000000000020000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000000000000000000020000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 000000000000000000000000030000000300000003000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 7
+    totalScore: 31
+  - combination: 000000000000000000000000030000000300000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 000000000000000000000000030000000300000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 000000000000000000000000030000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 000000000000000000000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000000000000000000030000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 000000000000000000000000040000000400000004000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 7
+    totalScore: 31
+  - combination: 000000000000000000000000040000000400000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 000000000000000000000000040000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 000000000000000000000000050000000500000005000000
+    foundationYeok: 13
+    baseScore: 40
+    bonusScore: 8
+    totalScore: 48
+  - combination: 000000000000000001000000010000000100000001000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 000000000000000001000000010000000100000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000000000001000000010000000100000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000001000000010000000100000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000001000000010000000100000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 000000000000000001000000010000000200000002000000
+    foundationYeok: 9
+    baseScore: 19
+    bonusScore: 7
+    totalScore: 26
+  - combination: 000000000000000001000000010000000200000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000000000001000000010000000200000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000000000001000000010000000200000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 8
+    totalScore: 11
+  - combination: 000000000000000001000000010000000300000003000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 7
+    totalScore: 16
+  - combination: 000000000000000001000000010000000300000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 000000000000000001000000010000000300000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000000000001000000010000000400000004000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 7
+    totalScore: 16
+  - combination: 000000000000000001000000010000000400000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000000000001000000010000000500000005000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 8
+    totalScore: 17
+  - combination: 000000000000000001000000020000000200000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000000000001000000020000000200000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000000000001000000020000000200000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000000000001000000020000000200000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 8
+    totalScore: 11
+  - combination: 000000000000000001000000020000000300000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000000000001000000020000000300000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 9
+    totalScore: 12
+  - combination: 000000000000000001000000020000000300000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 000000000000000001000000020000000400000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000000000001000000020000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 000000000000000001000000020000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 8
+    totalScore: 11
+  - combination: 000000000000000001000000030000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000001000000030000000300000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 000000000000000001000000030000000300000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000000000001000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 000000000000000001000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000000000001000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000000000001000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000001000000040000000400000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000000000001000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000000000001000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 000000000000000002000000020000000200000002000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 000000000000000002000000020000000200000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000002000000020000000200000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000002000000020000000200000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 000000000000000002000000020000000300000003000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 7
+    totalScore: 16
+  - combination: 000000000000000002000000020000000300000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 000000000000000002000000020000000300000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000000000002000000020000000400000004000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 7
+    totalScore: 16
+  - combination: 000000000000000002000000020000000400000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000000000002000000020000000500000005000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 8
+    totalScore: 17
+  - combination: 000000000000000002000000030000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000002000000030000000300000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 000000000000000002000000030000000300000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000000000002000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 000000000000000002000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000000000002000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000000000002000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000000000002000000040000000400000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000000000002000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000000000002000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 000000000000000003000000030000000300000003000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 000000000000000003000000030000000300000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 000000000000000003000000030000000300000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 000000000000000003000000030000000400000004000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 9
+    totalScore: 18
+  - combination: 000000000000000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000000000003000000030000000500000005000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 10
+    totalScore: 19
+  - combination: 000000000000000003000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 000000000000000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000000000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000000000003000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 000000000000000004000000040000000400000004000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 000000000000000004000000040000000400000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 000000000000000004000000040000000500000005000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 10
+    totalScore: 19
+  - combination: 000000000000000004000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 000000000000000005000000050000000500000005000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 8
+    totalScore: 28
+  - combination: 000000000100000001000000010000000100000001000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 000000000100000001000000010000000100000002000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000100000001000000010000000100000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000100000001000000010000000100000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000100000001000000010000000100000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 000000000100000001000000010000000200000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000001000000010000000200000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000001000000010000000200000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000001000000010000000200000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 8
+    totalScore: 11
+  - combination: 000000000100000001000000010000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000100000001000000010000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 000000000100000001000000010000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000100000001000000010000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000100000001000000010000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000100000001000000010000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 000000000100000001000000020000000200000002000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000001000000020000000200000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000001000000020000000200000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000001000000020000000200000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 8
+    totalScore: 11
+  - combination: 000000000100000001000000020000000300000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000001000000020000000300000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 9
+    totalScore: 12
+  - combination: 000000000100000001000000020000000300000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 000000000100000001000000020000000400000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000001000000020000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 000000000100000001000000020000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 8
+    totalScore: 11
+  - combination: 000000000100000001000000030000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000100000001000000030000000300000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 000000000100000001000000030000000300000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000100000001000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 000000000100000001000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000100000001000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000100000001000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000100000001000000040000000400000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000100000001000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000100000001000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 000000000100000002000000020000000200000002000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000100000002000000020000000200000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000002000000020000000200000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000002000000020000000200000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 8
+    totalScore: 11
+  - combination: 000000000100000002000000020000000300000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000002000000020000000300000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 9
+    totalScore: 12
+  - combination: 000000000100000002000000020000000300000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 000000000100000002000000020000000400000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000002000000020000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 000000000100000002000000020000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 8
+    totalScore: 11
+  - combination: 000000000100000002000000030000000300000003000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000002000000030000000300000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 9
+    totalScore: 12
+  - combination: 000000000100000002000000030000000300000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 000000000100000002000000030000000400000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 9
+    totalScore: 12
+  - combination: 000000000100000002000000030000000400000005000000
+    foundationYeok: 11
+    baseScore: 21
+    bonusScore: 16
+    totalScore: 37
+  - combination: 000000000100000002000000030000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 000000000100000002000000040000000400000004000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 7
+    totalScore: 10
+  - combination: 000000000100000002000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 000000000100000002000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 10
+    totalScore: 13
+  - combination: 000000000100000002000000050000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 8
+    totalScore: 11
+  - combination: 000000000100000003000000030000000300000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000100000003000000030000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 000000000100000003000000030000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000100000003000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 000000000100000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000100000003000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000100000003000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 000000000100000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000100000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000100000003000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000100000004000000040000000400000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000100000004000000040000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000100000004000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000100000004000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000100000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 000000000200000002000000020000000200000002000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 000000000200000002000000020000000200000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000200000002000000020000000200000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000200000002000000020000000200000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 000000000200000002000000020000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000200000002000000020000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 000000000200000002000000020000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000200000002000000020000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000200000002000000020000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000200000002000000020000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 000000000200000002000000030000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000200000002000000030000000300000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 000000000200000002000000030000000300000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000200000002000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 000000000200000002000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000200000002000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000200000002000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 000000000200000002000000040000000400000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000200000002000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000200000002000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 000000000200000003000000030000000300000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000200000003000000030000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 000000000200000003000000030000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000200000003000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 000000000200000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000200000003000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000200000003000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 000000000200000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000200000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000200000003000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000200000004000000040000000400000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 000000000200000004000000040000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000200000004000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 000000000200000004000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 000000000200000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 000000000300000003000000030000000300000003000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 000000000300000003000000030000000300000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 9
+    totalScore: 22
+  - combination: 000000000300000003000000030000000300000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 000000000300000003000000030000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 000000000300000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000300000003000000030000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 000000000300000003000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 000000000300000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000300000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000300000003000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 000000000300000004000000040000000400000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 9
+    totalScore: 22
+  - combination: 000000000300000004000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000300000004000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000300000004000000050000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 000000000300000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 000000000400000004000000040000000400000004000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 000000000400000004000000040000000400000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 000000000400000004000000040000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 000000000400000004000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 000000000400000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 000000000500000005000000050000000500000005000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 8
+    totalScore: 35
+  - combination: 010000000100000001000000010000000100000001000000
+    foundationYeok: 12
+    baseScore: 42
+    bonusScore: 11
+    totalScore: 53
+  - combination: 010000000100000001000000010000000100000002000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 010000000100000001000000010000000100000003000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 010000000100000001000000010000000100000004000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 010000000100000001000000010000000100000005000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 8
+    totalScore: 35
+  - combination: 010000000100000001000000010000000200000002000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 010000000100000001000000010000000200000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 010000000100000001000000010000000200000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 010000000100000001000000010000000200000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 010000000100000001000000010000000300000003000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 010000000100000001000000010000000300000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 9
+    totalScore: 22
+  - combination: 010000000100000001000000010000000300000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 010000000100000001000000010000000400000004000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 010000000100000001000000010000000400000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 010000000100000001000000010000000500000005000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 8
+    totalScore: 28
+  - combination: 010000000100000001000000020000000200000002000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 7
+    totalScore: 31
+  - combination: 010000000100000001000000020000000200000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 010000000100000001000000020000000200000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 010000000100000001000000020000000200000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 010000000100000001000000020000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 010000000100000001000000020000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 010000000100000001000000020000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 010000000100000001000000020000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 010000000100000001000000020000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 010000000100000001000000020000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 010000000100000001000000030000000300000003000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 7
+    totalScore: 31
+  - combination: 010000000100000001000000030000000300000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 010000000100000001000000030000000300000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 010000000100000001000000030000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 010000000100000001000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000100000001000000030000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 010000000100000001000000040000000400000004000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 7
+    totalScore: 31
+  - combination: 010000000100000001000000040000000400000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 010000000100000001000000040000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 010000000100000001000000050000000500000005000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 8
+    totalScore: 32
+  - combination: 010000000100000002000000020000000200000002000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 010000000100000002000000020000000200000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 010000000100000002000000020000000200000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 010000000100000002000000020000000200000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 010000000100000002000000020000000300000003000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 7
+    totalScore: 16
+  - combination: 010000000100000002000000020000000300000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 010000000100000002000000020000000300000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 010000000100000002000000020000000400000004000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 7
+    totalScore: 16
+  - combination: 010000000100000002000000020000000400000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 010000000100000002000000020000000500000005000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 8
+    totalScore: 17
+  - combination: 010000000100000002000000030000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 010000000100000002000000030000000300000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 010000000100000002000000030000000300000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 010000000100000002000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 010000000100000002000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000100000002000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 010000000100000002000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 010000000100000002000000040000000400000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 010000000100000002000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 010000000100000002000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 010000000100000003000000030000000300000003000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 010000000100000003000000030000000300000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 010000000100000003000000030000000300000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 010000000100000003000000030000000400000004000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 9
+    totalScore: 18
+  - combination: 010000000100000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000100000003000000030000000500000005000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 10
+    totalScore: 19
+  - combination: 010000000100000003000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 010000000100000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000100000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000100000003000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 010000000100000004000000040000000400000004000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 010000000100000004000000040000000400000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 010000000100000004000000040000000500000005000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 10
+    totalScore: 19
+  - combination: 010000000100000004000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 010000000100000005000000050000000500000005000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 8
+    totalScore: 28
+  - combination: 010000000200000002000000020000000200000002000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 010000000200000002000000020000000200000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 010000000200000002000000020000000200000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 010000000200000002000000020000000200000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 010000000200000002000000020000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 010000000200000002000000020000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 010000000200000002000000020000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 010000000200000002000000020000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 010000000200000002000000020000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 010000000200000002000000020000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 010000000200000002000000030000000300000003000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 010000000200000002000000030000000300000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 010000000200000002000000030000000300000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 010000000200000002000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 010000000200000002000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000200000002000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 010000000200000002000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 7
+    totalScore: 13
+  - combination: 010000000200000002000000040000000400000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 010000000200000002000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 010000000200000002000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 8
+    totalScore: 14
+  - combination: 010000000200000003000000030000000300000003000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 010000000200000003000000030000000300000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 010000000200000003000000030000000300000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 010000000200000003000000030000000400000004000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 9
+    totalScore: 11
+  - combination: 010000000200000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000200000003000000030000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 010000000200000003000000040000000400000004000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 9
+    totalScore: 13
+  - combination: 010000000200000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000200000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000200000003000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 010000000200000004000000040000000400000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 7
+    totalScore: 20
+  - combination: 010000000200000004000000040000000400000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 010000000200000004000000040000000500000005000000
+    foundationYeok: 1
+    baseScore: 2
+    bonusScore: 10
+    totalScore: 12
+  - combination: 010000000200000004000000050000000500000005000000
+    foundationYeok: 2
+    baseScore: 4
+    bonusScore: 10
+    totalScore: 14
+  - combination: 010000000200000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 8
+    totalScore: 21
+  - combination: 010000000300000003000000030000000300000003000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 010000000300000003000000030000000300000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 9
+    totalScore: 22
+  - combination: 010000000300000003000000030000000300000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 010000000300000003000000030000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 010000000300000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000300000003000000030000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 010000000300000003000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 010000000300000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000300000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000300000003000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 010000000300000004000000040000000400000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 9
+    totalScore: 22
+  - combination: 010000000300000004000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000300000004000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000300000004000000050000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 010000000300000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 010000000400000004000000040000000400000004000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 010000000400000004000000040000000400000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 010000000400000004000000040000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 010000000400000004000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 010000000400000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 010000000500000005000000050000000500000005000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 8
+    totalScore: 35
+  - combination: 020000000200000002000000020000000200000002000000
+    foundationYeok: 12
+    baseScore: 42
+    bonusScore: 11
+    totalScore: 53
+  - combination: 020000000200000002000000020000000200000003000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 020000000200000002000000020000000200000004000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 020000000200000002000000020000000200000005000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 8
+    totalScore: 35
+  - combination: 020000000200000002000000020000000300000003000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 020000000200000002000000020000000300000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 9
+    totalScore: 22
+  - combination: 020000000200000002000000020000000300000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 020000000200000002000000020000000400000004000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 020000000200000002000000020000000400000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 020000000200000002000000020000000500000005000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 8
+    totalScore: 28
+  - combination: 020000000200000002000000030000000300000003000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 7
+    totalScore: 31
+  - combination: 020000000200000002000000030000000300000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 020000000200000002000000030000000300000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 020000000200000002000000030000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 020000000200000002000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 020000000200000002000000030000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 020000000200000002000000040000000400000004000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 7
+    totalScore: 31
+  - combination: 020000000200000002000000040000000400000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 020000000200000002000000040000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 020000000200000002000000050000000500000005000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 8
+    totalScore: 32
+  - combination: 020000000200000003000000030000000300000003000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 020000000200000003000000030000000300000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 020000000200000003000000030000000300000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 020000000200000003000000030000000400000004000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 9
+    totalScore: 18
+  - combination: 020000000200000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 020000000200000003000000030000000500000005000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 10
+    totalScore: 19
+  - combination: 020000000200000003000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 020000000200000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 020000000200000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 020000000200000003000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 020000000200000004000000040000000400000004000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 7
+    totalScore: 27
+  - combination: 020000000200000004000000040000000400000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 020000000200000004000000040000000500000005000000
+    foundationYeok: 4
+    baseScore: 9
+    bonusScore: 10
+    totalScore: 19
+  - combination: 020000000200000004000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 020000000200000005000000050000000500000005000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 8
+    totalScore: 28
+  - combination: 020000000300000003000000030000000300000003000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 020000000300000003000000030000000300000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 9
+    totalScore: 22
+  - combination: 020000000300000003000000030000000300000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 020000000300000003000000030000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 020000000300000003000000030000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 020000000300000003000000030000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 020000000300000003000000040000000400000004000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 9
+    totalScore: 15
+  - combination: 020000000300000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 020000000300000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 020000000300000003000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 020000000300000004000000040000000400000004000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 9
+    totalScore: 22
+  - combination: 020000000300000004000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 020000000300000004000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 020000000300000004000000050000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 12
+    totalScore: 15
+  - combination: 020000000300000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 020000000400000004000000040000000400000004000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 7
+    totalScore: 34
+  - combination: 020000000400000004000000040000000400000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 020000000400000004000000040000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 020000000400000004000000050000000500000005000000
+    foundationYeok: 3
+    baseScore: 6
+    bonusScore: 10
+    totalScore: 16
+  - combination: 020000000400000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 10
+    totalScore: 23
+  - combination: 020000000500000005000000050000000500000005000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 8
+    totalScore: 35
+  - combination: 030000000300000003000000030000000300000003000000
+    foundationYeok: 12
+    baseScore: 42
+    bonusScore: 14
+    totalScore: 56
+  - combination: 030000000300000003000000030000000300000004000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 12
+    totalScore: 39
+  - combination: 030000000300000003000000030000000300000005000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 13
+    totalScore: 40
+  - combination: 030000000300000003000000030000000400000004000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 12
+    totalScore: 32
+  - combination: 030000000300000003000000030000000400000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 15
+    totalScore: 28
+  - combination: 030000000300000003000000030000000500000005000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 13
+    totalScore: 33
+  - combination: 030000000300000003000000040000000400000004000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 12
+    totalScore: 36
+  - combination: 030000000300000003000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 15
+    totalScore: 18
+  - combination: 030000000300000003000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 15
+    totalScore: 18
+  - combination: 030000000300000003000000050000000500000005000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 13
+    totalScore: 37
+  - combination: 030000000300000004000000040000000400000004000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 12
+    totalScore: 32
+  - combination: 030000000300000004000000040000000400000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 15
+    totalScore: 18
+  - combination: 030000000300000004000000040000000500000005000000
+    foundationYeok: 9
+    baseScore: 19
+    bonusScore: 15
+    totalScore: 34
+  - combination: 030000000300000004000000050000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 15
+    totalScore: 18
+  - combination: 030000000300000005000000050000000500000005000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 13
+    totalScore: 33
+  - combination: 030000000400000004000000040000000400000004000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 12
+    totalScore: 39
+  - combination: 030000000400000004000000040000000400000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 15
+    totalScore: 28
+  - combination: 030000000400000004000000040000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 15
+    totalScore: 18
+  - combination: 030000000400000004000000050000000500000005000000
+    foundationYeok: 5
+    baseScore: 3
+    bonusScore: 15
+    totalScore: 18
+  - combination: 030000000400000005000000050000000500000005000000
+    foundationYeok: 6
+    baseScore: 13
+    bonusScore: 15
+    totalScore: 28
+  - combination: 030000000500000005000000050000000500000005000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 13
+    totalScore: 40
+  - combination: 040000000400000004000000040000000400000004000000
+    foundationYeok: 12
+    baseScore: 42
+    bonusScore: 14
+    totalScore: 56
+  - combination: 040000000400000004000000040000000400000005000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 13
+    totalScore: 40
+  - combination: 040000000400000004000000040000000500000005000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 13
+    totalScore: 33
+  - combination: 040000000400000004000000050000000500000005000000
+    foundationYeok: 7
+    baseScore: 24
+    bonusScore: 13
+    totalScore: 37
+  - combination: 040000000400000005000000050000000500000005000000
+    foundationYeok: 8
+    baseScore: 20
+    bonusScore: 13
+    totalScore: 33
+  - combination: 040000000500000005000000050000000500000005000000
+    foundationYeok: 10
+    baseScore: 27
+    bonusScore: 13
+    totalScore: 40
+  - combination: 050000000500000005000000050000000500000005000000
+    foundationYeok: 12
+    baseScore: 42
+    bonusScore: 15
+    totalScore: 57
