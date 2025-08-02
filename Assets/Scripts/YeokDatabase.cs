@@ -6,4 +6,5 @@ using UnityEngine;
 public class YeokDatabase : ScriptableObject
 {
     public List<YeokData> allYeokData;
+    public static List<Dice> dices = new List<Dice>();
 }

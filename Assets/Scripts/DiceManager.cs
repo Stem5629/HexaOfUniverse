@@ -3,38 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DiceManager : MonoBehaviour
 {
-    public static DiceManager Instance { private set; get; }
-
     [SerializeField] private Sprite[] diceSprites = new Sprite[6];
     [SerializeField] private Transform diceParent;
     [SerializeField] private GameObject dicePrefab;
-    [SerializeField] private int diceRollCount;
+    [SerializeField] private int diceRollCount = 7;
     [SerializeField] private Button rollButton;
     [SerializeField] private Button arrangeButton;
     [SerializeField] private TextMeshProUGUI TMPremainRollCount;
+
+    [SerializeField] private Button goButton;
     
 
     private int diceIndexCount = 6; // 주사위 면의 수
 
-    private List<Dice> dices = new List<Dice>();
-
     private int maxDiceRollLimitCount = 100;
     private int currentDiceRollLimitCount;
-    public Sprite[] DiceSprites { get => diceSprites; set { diceSprites = value; } }
-    public int DiceRollCount { get => diceRollCount; set { diceRollCount = value; } }
-    public List<Dice> Dices { get => dices; set { dices = value; } }
-
-    void Awake()
-    {
-        Instance = this;
-        if (Instance != this) Destroy(gameObject); // 중복 오브젝트 방지
-
-        // 씬이 로드되어도 오브젝트가 파괴되지 않음
-        DontDestroyOnLoad(gameObject);
-    }
 
     private void Start()
     {
@@ -42,6 +29,7 @@ public class DiceManager : MonoBehaviour
         currentDiceRollLimitCount = maxDiceRollLimitCount;
         rollButton.onClick.AddListener(() => RollingDices(diceRollCount));
         arrangeButton.onClick.AddListener(ArrangeDicePool);
+        goButton.onClick.AddListener(GoToBattleScene);
     }
 
     private void RollingDices(int rollCount)
@@ -57,9 +45,9 @@ public class DiceManager : MonoBehaviour
         }
         else if (0 < currentDiceRollLimitCount && currentDiceRollLimitCount < maxDiceRollLimitCount)
         {
-            for (int i = 0; i < dices.Count; i++)
+            for (int i = 0; i < YeokDatabase.dices.Count; i++)
             {
-                RollDice(dices[i]);
+                RollDice(YeokDatabase.dices[i]);
             }
             currentDiceRollLimitCount--;
             TMPremainRollCount.text = "남은 굴림 횟수 : " + currentDiceRollLimitCount;
@@ -85,32 +73,15 @@ public class DiceManager : MonoBehaviour
 
     // 게임오브젝트 만들기 + 리스트에 추가
     // Dice 반환
-    private Dice CreateDice() 
+    private Dice CreateDice()
     {
         GameObject diceObject = Instantiate(dicePrefab, diceParent);
         Dice dice = diceObject.GetComponent<Dice>();
-        dices.Add(dice);
+        YeokDatabase.dices.Add(dice);
 
         return dice;
     }
 
-
-    // 게임오브젝트 + 리스트에서 없엠
-    // => 다이스 클릭하면 dice 반환하는 메서드 만들기
-    // List<Dice> 반환
-    private List<Dice> RemoveDice(List<Dice> dices, Dice dice)
-    {
-        for (int i = 0; i < dices.Count; i++)
-        {
-            if (dices[i] == dice)
-            {
-                Destroy(dice.gameObject);
-                dices.RemoveAt(i);
-                return dices;
-            }
-        }
-        return dices;
-    }
 
     // 다이스 정배열 => 정배열 버튼 누르면 실행
     private void ArrangeDicePool()
@@ -119,24 +90,29 @@ public class DiceManager : MonoBehaviour
         List<Dice> tempDices = new List<Dice>(); // 임시 리스트를 여기서 생성합니다.
         for (int i = 0; i < diceIndexCount; i++)
         {
-            for (int j = 0; j < dices.Count; j++)
+            for (int j = 0; j < YeokDatabase.dices.Count; j++)
             {
-                if (dices[j].DiceNumber == i)
+                if (YeokDatabase.dices[j].DiceNumber == i)
                 {
-                    tempDices.Add(dices[j]);
+                    tempDices.Add(YeokDatabase.dices[j]);
                 }
             }
         }
 
         // 2. 기존 dices 리스트를 정렬된 임시 리스트의 '복사본'으로 교체합니다.
         // (버그 수정: 그냥 대입하면 같은 리스트를 참조하게 되어 데이터가 사라질 수 있습니다)
-        dices = new List<Dice>(tempDices);
+        YeokDatabase.dices = new List<Dice>(tempDices);
 
         // 3. 정렬된 dices 리스트 순서대로 실제 게임 오브젝트의 순서를 재배치합니다.
         // SetAsLastSibling()을 순서대로 호출하면 Hierarchy상에서 오브젝트가 차례로 맨 뒤로 이동하며 정렬됩니다.
-        for (int i = 0; i < dices.Count; i++)
+        for (int i = 0; i < YeokDatabase.dices.Count; i++)
         {
-            dices[i].transform.SetAsLastSibling();
+            YeokDatabase.dices[i].transform.SetAsLastSibling();
         }
+    }
+
+    private void GoToBattleScene()
+    {
+        SceneManager.LoadScene((int)SceneEnum.Battle);
     }
 }
