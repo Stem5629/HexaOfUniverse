@@ -136,7 +136,7 @@ public class YeokDatabaseGenerator
     // 최종 결과를 정리하여 콘솔에 출력하는 함수
     private static void PrintSummary(List<YeokData> results, int totalCombinations)
     {
-        // --- 기존 요약 부분 (역별 개수) ---
+        // --- 1. 역별 개수 요약 ---
         var groupedResults = results.GroupBy(r => r.foundationYeok)
                                     .ToDictionary(g => g.Key, g => g.ToList());
 
@@ -150,32 +150,41 @@ public class YeokDatabaseGenerator
 
         int junkCount = totalCombinations - results.Count;
         Debug.Log($"[{"Junk Hand".PadRight(15)}]: {junkCount} 개");
-        Debug.Log("-------------------------------------------");
 
 
-        // =======================================================================
-        // --- Total Score 분포 분석 (5점 단위) ---
+        // --- 2. 점수 분포 분석 (1, 5, 10점 단위로 각각 호출) ---
+        AnalyzeAndPrintScoreDistribution(results, 1, 60);
+        AnalyzeAndPrintScoreDistribution(results, 5, 60);
+        AnalyzeAndPrintScoreDistribution(results, 10, 100); // 10점 단위는 100점 기준으로 분석
+    }
 
-        // 1. 0~59까지 5점 단위 구간을 저장할 딕셔너리 준비
+    /// <summary>
+    /// Total Score 분포를 주어진 간격(interval)으로 분석하고 출력하는 헬퍼 함수
+    /// </summary>
+    /// <param name="results">분석할 데이터 리스트</param>
+    /// <param name="interval">점수 간격 (1, 5, 10 등)</param>
+    /// <param name="upperBound">상세 분석할 점수 상한선</param>
+    private static void AnalyzeAndPrintScoreDistribution(List<YeokData> results, int interval, int upperBound)
+    {
+        // 1. 구간별 개수 저장을 위한 딕셔너리 준비
         var scoreDistribution = new Dictionary<int, int>();
-        for (int i = 0; i <= 55; i += 5) // 0, 5, 10, ..., 55까지 키를 미리 생성
+        for (int i = 0; i < upperBound; i += interval)
         {
             scoreDistribution[i] = 0;
         }
-        int over60Count = 0; // 60점 이상인 조합을 세는 변수
+        int overBoundCount = 0; // 상한선 초과 점수 카운트
 
-        // 2. 모든 결과 데이터를 순회하며 점수 구간에 따라 개수 증가
+        // 2. 모든 데이터를 순회하며 점수 구간에 따라 개수 계산
         foreach (var data in results)
         {
             int score = data.totalScore;
-            if (score >= 60)
+            if (score >= upperBound)
             {
-                over60Count++;
+                overBoundCount++;
             }
             else if (score >= 0)
             {
-                // 점수를 5로 나눈 몫에 5를 곱해 구간의 시작점 찾기 (예: 17 -> 15, 4 -> 0)
-                int rangeStart = (score / 5) * 5;
+                int rangeStart = (score / interval) * interval;
                 if (scoreDistribution.ContainsKey(rangeStart))
                 {
                     scoreDistribution[rangeStart]++;
@@ -184,21 +193,29 @@ public class YeokDatabaseGenerator
         }
 
         // 3. 분석 결과 출력
-        Debug.Log("--- Total Score 분포 분석 (5점 단위) ---");
+        Debug.Log("-------------------------------------------");
+        Debug.Log($"--- Total Score 분포 분석 ({interval}점 단위) ---");
+
         foreach (var entry in scoreDistribution.OrderBy(e => e.Key))
         {
             int rangeStart = entry.Key;
-            int rangeEnd = rangeStart + 4; // 구간의 끝점
             int count = entry.Value;
-            Debug.Log($"점수 [{rangeStart.ToString().PadLeft(3)} ~ {rangeEnd.ToString().PadLeft(3)}]: {count} 개");
+
+            if (interval == 1)
+            {
+                // 1점 단위는 "0 ~ 0" 대신 "0"으로만 표시
+                Debug.Log($"점수 [{rangeStart,3}]: {count} 개");
+            }
+            else
+            {
+                int rangeEnd = rangeStart + interval - 1;
+                Debug.Log($"점수 [{rangeStart,3} ~ {rangeEnd,3}]: {count} 개");
+            }
         }
 
-        // 60점 이상인 조합이 있으면 출력
-        if (over60Count > 0)
+        if (overBoundCount > 0)
         {
-            Debug.Log($"점수 [ 60 이상      ]: {over60Count} 개");
+            Debug.Log($"점수 [{upperBound,3} 이상      ]: {overBoundCount} 개");
         }
-        Debug.Log("-------------------------------------------");
-        // =======================================================================
     }
 }
