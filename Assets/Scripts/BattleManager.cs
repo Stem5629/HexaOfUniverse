@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq; // LINQ를 사용하기 위해 추가해야 합니다.
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum EnemyLevelEnum
 {
@@ -31,6 +32,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private YeokDatabase yeokDatabase; // 인스펙터에서 YeokDatabase.asset 파일을 연결해주세요.
     public Sprite[] DiceSprites => diceSprites;
 
+    private List<Dice> selectedPlayerDices = new List<Dice>();
+
     private void Start()
     {
         // 테스트를 위해 난이도 0의 적을 소환합니다.
@@ -39,8 +42,6 @@ public class BattleManager : MonoBehaviour
         SetPlayerDice();
 
         InstantiateEnemyByDifficulty(1);
-        InstantiateEnemyByDifficulty(2);
-        InstantiateEnemyByDifficulty(3);
     }
 
     /// <summary>
@@ -98,6 +99,23 @@ public class BattleManager : MonoBehaviour
             {
                 newEnemy.Setup(selectedYeok, this); // Enemy 스크립트에 데이터 전달
             }
+            GameObject buttonObject = Instantiate(selectButtonPrefab, selectButtonParent);
+
+            // 버튼 번호 설정
+            TextMeshProUGUI buttonText = buttonObject.GetComponentInChildren<TextMeshProUGUI>();
+            if (buttonText != null)
+            {
+                // 현재 생성된 적의 수만큼 번호를 매김
+                buttonText.text = enemyParent.childCount.ToString();
+            }
+
+            // 버튼 클릭 이벤트에 CommitDiceToEnemy 메서드 연결
+            Button selectButton = buttonObject.GetComponent<Button>();
+            if (selectButton != null)
+            {
+                // 버튼을 누르면 'newEnemy'를 타겟으로 주사위를 제출하도록 설정
+                selectButton.onClick.AddListener(() => CommitDiceToEnemy(newEnemy));
+            }
         }
         else
         {
@@ -119,17 +137,20 @@ public class BattleManager : MonoBehaviour
             Dice newDice = diceObject.GetComponent<Dice>();
 
             // b. [핵심] 저장된 데이터(data)의 값을 새로운 주사위(newDice)에 복사합니다.
-            newDice.DiceNumber = data.DiceNumber; // <-- 이 부분이 누락되었습니다!
+            newDice.DiceNumber = data.DiceNumber;
             newDice.DiceSprite = diceSprites[newDice.DiceNumber];
 
             // c. 복사한 값을 바탕으로 이미지를 업데이트합니다.
             newDice.DiceSpriteInstance();
+
+
+            Button diceButton = newDice.GetComponent<Button>();
+            if (diceButton != null)
+            {
+                // 주사위를 클릭하면 ToggleDiceSelection 메서드가 호출되도록 설정
+                diceButton.onClick.AddListener(() => ToggleDiceSelection(newDice));
+            }
         }
-    }
-
-    private void InstantiateSelectButtons(int difficulty)
-    {
-
     }
 
     private void RollDice(Dice dice)
@@ -204,5 +225,47 @@ public class BattleManager : MonoBehaviour
         {
             YeokDatabase.dices[i].transform.SetAsLastSibling();
         }
+    }
+
+    // BattleManager.cs (클래스 내부에 추가)
+
+    // 플레이어가 자신의 주사위를 클릭했을 때 호출될 메서드
+    public void ToggleDiceSelection(Dice dice)
+    {
+        if (selectedPlayerDices.Contains(dice))
+        {
+            // 이미 선택된 주사위면 리스트에서 제거 (선택 해제)
+            selectedPlayerDices.Remove(dice);
+            dice.transform.localScale = Vector3.one; // (시각적 피드백) 크기를 원래대로
+        }
+        else
+        {
+            // 선택되지 않은 주사위면 리스트에 추가 (선택)
+            selectedPlayerDices.Add(dice);
+            dice.transform.localScale = Vector3.one * 1.2f; // (시각적 피드백) 크기를 살짝 키움
+        }
+    }
+
+    // 적 선택 버튼을 눌렀을 때, 선택된 주사위들을 해당 적에게 전달하는 메서드
+    public void CommitDiceToEnemy(Enemy targetEnemy)
+    {
+        if (selectedPlayerDices.Count == 0)
+        {
+            Debug.Log("제출할 주사위를 먼저 선택하세요.");
+            return;
+        }
+
+        // 선택된 주사위들을 하나씩 처리
+        foreach (Dice diceToCommit in selectedPlayerDices)
+        {
+            // Enemy.cs에 있는 ReceivePlayerDice 함수를 호출 (2단계에서 만듦)
+            targetEnemy.ReceivePlayerDice(diceToCommit);
+
+            // 플레이어 손에 있던 원래 주사위 오브젝트는 파괴
+            Destroy(diceToCommit.gameObject);
+        }
+
+        // 제출이 끝났으므로 선택 리스트를 비움
+        selectedPlayerDices.Clear();
     }
 }

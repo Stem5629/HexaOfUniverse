@@ -79,6 +79,16 @@ public class Enemy : MonoBehaviour
             {
                 // 주사위 오브젝트 생성
                 GameObject diceObject = Instantiate(dicePrefab, enemyParent);
+
+                // 1. 생성된 주사위에서 Button 컴포넌트를 가져옵니다.
+                Button diceButton = diceObject.GetComponent<Button>();
+
+                // 2. Button 컴포넌트가 존재하면 interactable 속성을 false로 설정합니다.
+                if (diceButton != null)
+                {
+                    diceButton.interactable = false;
+                }
+
                 Dice newDice = diceObject.GetComponent<Dice>();
 
                 // Dice.cs 스크립트에 데이터 설정
@@ -99,5 +109,34 @@ public class Enemy : MonoBehaviour
         }
 
         Debug.Log($"적 생성 완료: {data.foundationYeok} / {string.Join(", ", data.combination)} / 총점 {data.totalScore}");
+    }
+
+
+    public void ReceivePlayerDice(Dice diceData)
+    {
+        if (dicePrefab == null)
+        {
+            Debug.LogError("Enemy 스크립트에 Dice Prefab이 할당되지 않았습니다!");
+            return;
+        }
+
+        // 1. 플레이어의 주사위를 자신의 playerParent 아래에 생성
+        GameObject diceObject = Instantiate(dicePrefab, playerParent);
+        Dice newDice = diceObject.GetComponent<Dice>();
+
+        // 2. 전달받은 데이터로 정보 설정
+        newDice.DiceNumber = diceData.DiceNumber;
+        newDice.DiceSprite = battleManager.DiceSprites[newDice.DiceNumber];
+        newDice.DiceSpriteInstance();
+
+        // 3. (선택) 새로 생긴 주사위를 클릭해서 다시 손으로 되돌리는 기능 추가를 위해 리스너 연결
+        Button diceButton = diceObject.GetComponent<Button>();
+        if (diceButton != null)
+        {
+            // 예: diceButton.onClick.AddListener(() => ReturnDiceToHand(newDice));
+        }
+
+        // 4. 생성된 주사위를 내부 리스트에 추가하여 관리
+        playerDices.Add(newDice);
     }
 }
