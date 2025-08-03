@@ -14,10 +14,10 @@ public class BaseTreeScore
     public int doubleTriple = 24;
     public int grandFullHouse = 20;
     public int doubleStraight = 19;
-    public int fiveCard = 27;
+    public int fiveCard = 24;
     public int universe = 21;
-    public int hexa = 42;
-    public int genesis = 40;
+    public int hexa = 32;
+    public int genesis = 35;
 }
 
 // 2. 역의 종류와 우선순위를 나타내는 Enum

@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class AddTreeScore
 {
-    public int allNumber = 2;
-    public int allSymbol = 3;
+    public int allNumber = 3;
+    public int allSymbol = 2;
     public int pure = 4;
-    public int mix = 4;
-    public int includeStar = 2;
+    public int mix = 3;
+    public int includeStar = 1;
     public int includeMoon = 2;
     public int includeSun = 3;
-    public int fullDice = 5;
+    public int fullDice = 4;
 }
-
 
 // 주사위 개수 4개 이상 일때부터 추가 점수 역 적용
 public class AddTree

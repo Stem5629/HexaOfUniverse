@@ -188,7 +188,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5c24bc93174aa244817f6d2d5fda250, type: 2}
   m_sharedMaterial: {fileID: -5262620149659355753, guid: b5c24bc93174aa244817f6d2d5fda250, type: 2}
@@ -694,7 +694,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5c24bc93174aa244817f6d2d5fda250, type: 2}
   m_sharedMaterial: {fileID: -5262620149659355753, guid: b5c24bc93174aa244817f6d2d5fda250, type: 2}
@@ -961,7 +961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008af8ad99c27454cb7f8e9a223a2963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleManager: {fileID: 0}
   enemyParent: {fileID: 4912017348299755836}
   TMP_EnemyBaseTree: {fileID: 4334865772251572761}
   TMP_EnemyAddTree: {fileID: 2600844438812776426}
@@ -1038,9 +1037,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '31
-
-    [click]'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5c24bc93174aa244817f6d2d5fda250, type: 2}
   m_sharedMaterial: {fileID: -5262620149659355753, guid: b5c24bc93174aa244817f6d2d5fda250, type: 2}

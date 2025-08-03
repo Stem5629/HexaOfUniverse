@@ -4409,7 +4409,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 230650665b618934aaf6f966aa93acf7, type: 3}
   diceParent: {fileID: 1157402811}
   dicePrefab: {fileID: 3530663113045027904, guid: 9693f261ad8177c4bb88673f68d7e3cb, type: 3}
-  diceRollCount: 7
+  diceRollCount: 16
   rollButton: {fileID: 1295719212}
   arrangeButton: {fileID: 248119066}
   TMPremainRollCount: {fileID: 88092396}
@@ -4466,7 +4466,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 211, y: 43}
-  m_SizeDelta: {x: 680, y: 340}
+  m_SizeDelta: {x: 680, y: 680}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1157402812
 MonoBehaviour:

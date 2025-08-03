@@ -38,13 +38,19 @@ public class YeokDatabaseGenerator
         foreach (var combo in allCombinations)
         {
             int[] comboArray = combo.ToArray();
-            bool isClassified = false;
 
             foreach (BaseTreeEnum yeok in yeokOrder)
             {
                 if (IsYeokMatch(baseTreeEvaluator, yeok, comboArray))
                 {
-                    int bonusScore = CalculateBonusScore(addTreeEvaluator, addTreeScores, comboArray);
+                    int bonusScore = 0; // 보너스 점수를 0으로 초기화
+
+                    // 주사위 개수가 4개 이상일 때만 보너스 점수를 계산
+                    if (combo.Count >= 4)
+                    {
+                        bonusScore = CalculateBonusScore(addTreeEvaluator, addTreeScores, comboArray);
+                    }
+
                     int baseScore = GetBaseScore(baseTreeScores, yeok);
 
                     YeokData data = new YeokData
@@ -57,7 +63,6 @@ public class YeokDatabaseGenerator
                     };
                     database.allYeokData.Add(data);
 
-                    isClassified = true;
                     break;
                 }
             }
