@@ -761,7 +761,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Babel Dice
+  m_text: "\uB2E4\uC774\uC2A4 \uD06C\uB85C\uB2C8\uD074: \uB8EC \uB9C8\uC2A4\uD130"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3c89af930b55f984c896ee910c0737b6, type: 2}
   m_sharedMaterial: {fileID: 7696405967799564312, guid: 3c89af930b55f984c896ee910c0737b6, type: 2}
@@ -788,8 +788,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 300
-  m_fontSizeBase: 300
+  m_fontSize: 200
+  m_fontSizeBase: 200
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
