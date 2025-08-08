@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/0. Title.unity
+    path: Assets/Scenes/LoginScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/1. RollingDice.unity
-    guid: 45dab3dd8df82a240bc90ef4162eb0b3
+    path: Assets/Scenes/LobbyScene.unity
+    guid: 38b07d57ebfdb424890afed5c4b252ed
   - enabled: 1
-    path: Assets/Scenes/2. Battle.unity
+    path: Assets/Scenes/LoadingScene.unity
+    guid: b9bf9f2ee5b14244aaff45a58999e135
+  - enabled: 1
+    path: Assets/Scenes/BattleScene.unity
     guid: cf535ccd621009541a3bc9b94bdf8c49
-  - enabled: 0
-    path: Assets/Scenes/Home.unity
-    guid: 323deb31bc711464892bda23fe0a27cc
+  - enabled: 1
+    path: Assets/Scenes/ResultScene.unity
+    guid: c4818493e26cda743a868c0d82f17387
   m_configObjects: {}
