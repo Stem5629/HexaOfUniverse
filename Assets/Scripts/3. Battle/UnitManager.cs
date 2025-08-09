@@ -67,7 +67,6 @@ public class UnitManager : MonoBehaviourPunCallbacks
 
         for (int i = 0; i < yeokTypes.Length; i++)
         {
-            // 전송받은 데이터로 역 정보 재구성
             CompletedYeokInfo yeokInfo = new CompletedYeokInfo
             {
                 YeokType = (BaseTreeEnum)yeokTypes[i],
@@ -75,11 +74,13 @@ public class UnitManager : MonoBehaviourPunCallbacks
                 IsHorizontal = isHorizontals[i]
             };
 
-            UnitData newUnitData = CreateUnitDataFromYeok(yeokInfo, owner);
+            // UnitData newUnitData = CreateUnitDataFromYeok(yeokInfo, owner); <-- 기존 코드는 삭제
+
             int[] slotIndices = GetPerimeterIndices(yeokInfo);
 
-            AttemptToPlaceUnit(newUnitData, perimeterSlots[slotIndices[0]]);
-            AttemptToPlaceUnit(newUnitData, perimeterSlots[slotIndices[1]]);
+            // 각 슬롯에 배치할 때마다 새로운 유닛 데이터를 생성합니다.
+            AttemptToPlaceUnit(CreateUnitDataFromYeok(yeokInfo, owner), perimeterSlots[slotIndices[0]]);
+            AttemptToPlaceUnit(CreateUnitDataFromYeok(yeokInfo, owner), perimeterSlots[slotIndices[1]]);
         }
     }
 
@@ -162,19 +163,20 @@ public class UnitManager : MonoBehaviourPunCallbacks
         return unit;
     }
 
-    // 그리드 좌표를 24칸 외곽 인덱스로 변환하는 헬퍼 함수
     private int[] GetPerimeterIndices(CompletedYeokInfo yeokInfo)
     {
         int[] indices = new int[2];
         if (yeokInfo.IsHorizontal)
         {
-            indices[0] = 17 - yeokInfo.LineIndex; // 좌측 (위에서부터 0~5 -> 17~12)
-            indices[1] = 18 + yeokInfo.LineIndex; // 우측 (위에서부터 0~5 -> 18~23) -- 수정된 부분
+            // 왼쪽 타일 인덱스 계산 공식을 수정합니다.
+            indices[0] = 12 + yeokInfo.LineIndex; // 17 - yeokInfo.LineIndex -> 12 + yeokInfo.LineIndex 로 변경
+            indices[1] = 18 + yeokInfo.LineIndex; // 오른쪽은 정상이므로 그대로 둡니다.
         }
         else
         {
-            indices[0] = yeokInfo.LineIndex;     // 상단 (왼쪽부터 0~5)
-            indices[1] = 6 + yeokInfo.LineIndex; // 하단 (왼쪽부터 0~5)
+            // 세로줄 계산은 정상이므로 그대로 둡니다.
+            indices[0] = yeokInfo.LineIndex;
+            indices[1] = 6 + yeokInfo.LineIndex;
         }
         return indices;
     }

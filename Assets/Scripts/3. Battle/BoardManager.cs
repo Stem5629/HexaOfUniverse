@@ -2,12 +2,14 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI; // Image 컴포넌트 사용을 위해 추가
+using Photon.Pun;
+using Photon.Realtime;
 
 /// <summary>
 /// 6x6 그리드 보드의 데이터를 관리하고, '역'을 스캔하며, 주사위 배치/제거를 처리합니다.
 /// FieldInitializer에 의해 초기화되고, GameManager에 의해 제어됩니다.
 /// </summary>
-public class BoardManager : MonoBehaviour
+public class BoardManager : MonoBehaviourPunCallbacks
 {
     // --- 데이터 ---
     private DiceData[,] gridData = new DiceData[6, 6]; // 6x6 그리드의 논리적 데이터
@@ -21,8 +23,9 @@ public class BoardManager : MonoBehaviour
 
     // --- 외부 참조 ---
     [HideInInspector] public PlayerHand currentTurnPlayerHand;
-    [SerializeField] private Sprite[] diceSprites; // 주사위 이미지를 표시하기 위한 스프라이트 배열 (인스펙터에서 할당)
-                                                   //[SerializeField] private Sprite emptyTileSprite; // 빈 타일 이미지 (인스펙터에서 할당)
+    [SerializeField] private Sprite[] diceSprites;
+    [SerializeField] private Sprite emptyTileSprite;
+
 
 
     // BoardManager.cs 의 Initialize 함수
@@ -30,25 +33,17 @@ public class BoardManager : MonoBehaviour
     public void Initialize(GameObject[,] tiles)
     {
         this.gridTiles = tiles;
-
-        // 타일 클릭 이벤트 연결 로직
         for (int x = 0; x < 6; x++)
         {
             for (int y = 0; y < 6; y++)
             {
-                // --- 아래 if문 추가 ---
-                // 이 칸이 null이 아닌, 실제 타일 오브젝트일 경우에만 로직을 실행합니다.
                 if (gridTiles[x, y] != null)
                 {
                     Tile tile = gridTiles[x, y].GetComponent<Tile>();
                     int coordX = x;
                     int coordY = y;
+                    tile.button.onClick.RemoveAllListeners();
                     tile.button.onClick.AddListener(() => GameManager.Instance.OnGridTileClicked(coordX, coordY));
-                }
-                else
-                {
-                    // 이 로그가 콘솔에 찍힌다면, 씬 설정에 문제가 있다는 의미입니다.
-                    Debug.LogError($"BoardManager Error: gridTiles[{x},{y}]가 null입니다. 씬 설정을 확인하세요.");
                 }
             }
         }
@@ -63,45 +58,84 @@ public class BoardManager : MonoBehaviour
         GameManager.Instance.OnGridTileClicked(x, y);
     }
 
-
     /// <summary>
-    /// 플레이어의 손패에 있는 주사위를 그리드의 특정 위치에 배치합니다.
+    /// GameManager가 호출할 전체 보드 초기화 명령 함수
     /// </summary>
-    public void PlaceDiceOnGrid(int diceNumber, int x, int y)
+    public void ClearAllDiceViaRPC()
     {
-        if (gridData[x, y] != null)
-        {
-            Debug.Log("이미 주사위가 놓인 자리입니다.");
-            return;
-        }
+        // 모든 클라이언트에게 보드를 비우라고 명령합니다.
+        photonView.RPC("ClearAllDiceRPC", RpcTarget.All);
+    }
 
-        if (currentTurnPlayerHand != null && currentTurnPlayerHand.HasDice(diceNumber))
+    [PunRPC]
+    private void ClearAllDiceRPC()
+    {
+        // 6x6 그리드를 모두 순회합니다.
+        for (int x = 0; x < 6; x++)
         {
-            currentTurnPlayerHand.UseDice(diceNumber);
-            gridData[x, y] = new DiceData { DiceNumber = diceNumber };
-            UpdateTileUI(x, y); // UI 업데이트
-        }
-        else
-        {
-            Debug.LogError("현재 턴의 PlayerHand가 없거나, 해당 주사위를 가지고 있지 않습니다.");
+            for (int y = 0; y < 6; y++)
+            {
+                // 칸에 주사위가 있다면
+                if (gridData[x, y] != null)
+                {
+                    // 데이터와 UI를 모두 초기화합니다.
+                    gridData[x, y] = null;
+                    UpdateTileUI(x, y);
+                }
+            }
         }
     }
 
-    /// <summary>
-    /// 그리드에 배치된 주사위를 다시 플레이어의 손패로 되돌립니다.
-    /// </summary>
-    public void PickUpDiceFromGrid(int x, int y)
+
+    public void PlaceDiceOnGrid(int diceNumber, int x, int y, Player placingPlayer)
     {
-        if (gridData[x, y] == null)
+        if (gridData[x, y] != null) return;
+
+        // 주사위를 놓은 플레이어가 "나"일 경우에만 내 손에서 주사위를 제거합니다.
+        if (placingPlayer.IsLocal)
         {
-            Debug.Log("주사위가 없는 빈 자리입니다.");
-            return;
+            if (currentTurnPlayerHand != null && currentTurnPlayerHand.HasDice(diceNumber))
+            {
+                currentTurnPlayerHand.UseDice(diceNumber);
+            }
+            else return; // 손에 없는 주사위라면 무시
         }
 
+        gridData[x, y] = new DiceData { DiceNumber = diceNumber };
+        UpdateTileUI(x, y);
+    }
+
+    public void PickUpDiceFromGrid(int x, int y)
+    {
+        if (gridData[x, y] == null) return;
         DiceData diceToReclaim = gridData[x, y];
-        currentTurnPlayerHand.ReclaimDice(diceToReclaim.DiceNumber);
+
+        // 주사위를 회수하는 턴의 플레이어가 "나"일 경우에만 내 손으로 주사위를 가져옵니다.
+        if (GameManager.Instance.GetCurrentPlayer().IsLocal)
+        {
+            currentTurnPlayerHand.ReclaimDice(diceToReclaim.DiceNumber);
+        }
+
         gridData[x, y] = null;
-        UpdateTileUI(x, y); // UI 업데이트
+        UpdateTileUI(x, y);
+    }
+
+    // --- 버그 3 수정을 위한 RPC 로직 추가 ---
+    public void ClearUsedDiceViaRPC(List<CompletedYeokInfo> yeoksToClear)
+    {
+        List<int> positionsToClearX = new List<int>();
+        List<int> positionsToClearY = new List<int>();
+
+        foreach (var yeokInfo in yeoksToClear)
+        {
+            foreach (var pos in yeokInfo.DicePositions)
+            {
+                positionsToClearX.Add(pos.x);
+                positionsToClearY.Add(pos.y);
+            }
+        }
+        // 모든 클라이언트에게 어떤 좌표의 주사위를 지울지 방송
+        photonView.RPC("ClearUsedDiceRPC", RpcTarget.All, positionsToClearX.ToArray(), positionsToClearY.ToArray());
     }
 
     /// <summary>
@@ -122,9 +156,13 @@ public class BoardManager : MonoBehaviour
                 if (gridData[x, y] != null)
                 {
                     diceNumbersInLine.Add(gridData[x, y].DiceNumber);
-                    dicePositionsInLine.Add(new Vector2Int(x, y));
+                    dicePositionsInLine.Add(new Vector2Int(x, y)); // <-- 이 줄을 추가하세요!
                 }
             }
+
+            // --- 디버그 로그 4: 스캔 시 각 라인의 주사위 상태 확인 ---
+            if (diceNumbersInLine.Count > 0)
+                Debug.Log($"[BM] 스캔 중... 가로 {y}줄 발견된 주사위: [{string.Join(", ", diceNumbersInLine)}]");
 
             if (diceNumbersInLine.Count < 2) continue;
 
@@ -187,24 +225,66 @@ public class BoardManager : MonoBehaviour
         return foundYeoks;
     }
 
-    /// <summary>
-    /// 유닛 소환에 사용된 주사위들을 그리드에서 제거합니다.
-    /// </summary>
-    public void ClearUsedDice(List<CompletedYeokInfo> yeoksToClear)
+    [PunRPC]
+    public void PlaceDiceRPC(int diceNumber, int x, int y, Player placingPlayer)
     {
-        foreach (var yeokInfo in yeoksToClear)
+        // 이미 주사위가 있거나, 손에 없는 주사위면 리턴
+        if (gridData[x, y] != null) return;
+
+        // 해당 턴의 플레이어인지 확인 (선택사항이지만 더 안전함)
+        if (placingPlayer != GameManager.Instance.GetCurrentPlayer()) return;
+
+        // 로컬 플레이어의 손에서만 주사위를 실제로 사용
+        if (placingPlayer.IsLocal)
         {
-            foreach (var pos in yeokInfo.DicePositions)
+            if (currentTurnPlayerHand != null && currentTurnPlayerHand.HasDice(diceNumber))
             {
-                gridData[pos.x, pos.y] = null;
-                UpdateTileUI(pos.x, pos.y); // UI 업데이트
+                currentTurnPlayerHand.UseDice(diceNumber);
+            }
+            else
+            {
+                // 손에 없는 주사위를 놓으려고 하면 RPC를 받았더라도 무시
+                return;
+            }
+        }
+
+        gridData[x, y] = new DiceData { DiceNumber = diceNumber };
+        UpdateTileUI(x, y);
+    }
+
+    // 주사위 회수를 위한 RPC (PlaceDiceRPC를 참고하여 직접 만들어보세요!)
+    [PunRPC]
+    public void PickUpDiceRPC(int x, int y)
+    {
+        if (gridData[x, y] == null) return;
+
+        DiceData diceToReclaim = gridData[x, y];
+
+        // 주사위를 회수하는 플레이어가 로컬 플레이어일 때만 손으로 가져옴
+        if (GameManager.Instance.GetCurrentPlayer().IsLocal)
+        {
+            currentTurnPlayerHand.ReclaimDice(diceToReclaim.DiceNumber);
+        }
+
+        gridData[x, y] = null;
+        UpdateTileUI(x, y);
+    }
+
+    [PunRPC]
+    private void ClearUsedDiceRPC(int[] xCoords, int[] yCoords)
+    {
+        for (int i = 0; i < xCoords.Length; i++)
+        {
+            int x = xCoords[i];
+            int y = yCoords[i];
+            if (gridData[x, y] != null)
+            {
+                gridData[x, y] = null;
+                UpdateTileUI(x, y);
             }
         }
     }
 
-    /// <summary>
-    /// 특정 타일의 UI를 현재 gridData 상태에 맞게 업데이트합니다.
-    /// </summary>
     private void UpdateTileUI(int x, int y)
     {
         Image tileImage = gridTiles[x, y].GetComponent<Image>();
@@ -214,7 +294,7 @@ public class BoardManager : MonoBehaviour
         }
         else
         {
-            //tileImage.sprite = emptyTileSprite;
+            tileImage.sprite = emptyTileSprite;
         }
     }
 

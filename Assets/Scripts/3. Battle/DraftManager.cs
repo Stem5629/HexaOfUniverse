@@ -26,52 +26,31 @@ public class DraftManager : MonoBehaviourPunCallbacks // MonoBehaviour 대신 Phot
     private int picksRequired = 0;
 
     // 라운드별 규칙 미리 정의
-    private readonly int[] pickOrder_Round1 = { 1, 2, 2, 2, 2, 1 }; // 10개 드래프트
-    private readonly int[] pickOrder_Round2 = { 1, 2, 2, 2, 2, 2, 1 }; // 12개 드래프트
-    private readonly int[] pickOrder_Round3 = { 1, 2, 2, 2, 2, 2, 2, 1 }; // 14개 드래프트
+    private readonly int[] pickOrder = { 1, 2, 2, 2, 2, 2, 2, 1 };
 
     private int[] currentPickOrder;
 
     void Start()
     {
         confirmButton.onClick.AddListener(OnConfirmButtonClicked);
-        StartDraft(currentRound);
+        //StartDraft(currentRound);
     }
 
     /// <summary>
-    /// 지정된 라운드의 드래프트를 시작합니다.
+    /// 지정된 라운드의 드래프트를 시작합니다. (마스터 클라이언트만 호출)
     /// </summary>
-    public void StartDraft(int round)
+    public void StartDraft() // 이제 round 매개변수가 필요 없습니다.
     {
-        turnStep = 0;
-
-        // 라운드에 따라 드래프트 규칙을 자동으로 설정
-        int diceToDraft;
-        switch (round)
-        {
-            case 1:
-                diceToDraft = 10;
-                currentPickOrder = pickOrder_Round1;
-                break;
-            case 2:
-                diceToDraft = 12;
-                currentPickOrder = pickOrder_Round2;
-                break;
-            default: // 3라운드 이후
-                diceToDraft = 14;
-                currentPickOrder = pickOrder_Round3;
-                break;
-        }
-
         // 주사위 풀 초기화 및 생성 (마스터 클라이언트에서만 실행)
         if (PhotonNetwork.IsMasterClient)
         {
+            int diceToDraft = currentPickOrder.Sum();
+
             List<int> randomDiceNumbers = new List<int>();
             for (int i = 0; i < diceToDraft; i++)
             {
                 randomDiceNumbers.Add(Random.Range(0, 6));
             }
-            // 모든 클라이언트에게 동일한 주사위 풀을 생성하라고 명령 (RPC 사용)
             photonView.RPC("SetupDraftPoolRPC", RpcTarget.All, randomDiceNumbers.ToArray());
         }
     }
@@ -113,6 +92,23 @@ public class DraftManager : MonoBehaviourPunCallbacks // MonoBehaviour 대신 Phot
 
         // Photon에서는 마스터 클라이언트가 선공(P1)이 됩니다.
         SetTurn();
+    }
+
+    /// <summary>
+    /// 모든 클라이언트에서 라운드에 맞는 드래프트 규칙을 설정하기 위한 함수
+    /// </summary>
+    public void InitializeForRound(int round)
+    {
+        currentRound = round;
+        turnStep = 0;
+
+        // --- 아래 두 줄을 추가하세요 ---
+        System.Array.Clear(myDiceCount, 0, myDiceCount.Length);
+        System.Array.Clear(versusDiceCount, 0, versusDiceCount.Length);
+
+        // --- 수정된 부분 ---
+        // 라운드와 상관없이 항상 통일된 규칙을 사용합니다.
+        currentPickOrder = pickOrder;
     }
 
     /// <summary>
@@ -204,10 +200,12 @@ public class DraftManager : MonoBehaviourPunCallbacks // MonoBehaviour 대신 Phot
         // 모든 드래프트가 끝났는지 확인
         if (turnStep >= currentPickOrder.Length)
         {
-            // 드래프트 종료 로직
             turnIndicatorText.text = "드래프트 종료!";
-            // TODO: 다음 게임 단계(소환진 배치 등)로 넘어가는 로직 호출
+
+            // --- 수정된 부분 ---
+            // GameManager에게 드래프트 결과를 전달하고, 자신은 비활성화
             GameManager.Instance.EndDraftPhase(myDiceCount, versusDiceCount);
+            this.gameObject.SetActive(false); // 드래셔프트 매니저의 역할은 끝났으므로 비활성화
         }
         else
         {
