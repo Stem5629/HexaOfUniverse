@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine.UI; // Image 컴포넌트 사용을 위해 추가
+using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -26,10 +26,6 @@ public class BoardManager : MonoBehaviourPunCallbacks
     [SerializeField] private Sprite[] diceSprites;
     [SerializeField] private Sprite emptyTileSprite;
 
-
-
-    // BoardManager.cs 의 Initialize 함수
-
     public void Initialize(GameObject[,] tiles)
     {
         this.gridTiles = tiles;
@@ -47,15 +43,6 @@ public class BoardManager : MonoBehaviourPunCallbacks
                 }
             }
         }
-    }
-
-    /// <summary>
-    /// 플레이어가 그리드의 타일을 클릭했을 때 호출될 함수
-    /// </summary>
-    private void OnTileClicked(int x, int y)
-    {
-        // GameManager에게 좌표를 전달하여, 주사위 배치 또는 회수를 요청
-        GameManager.Instance.OnGridTileClicked(x, y);
     }
 
     /// <summary>
@@ -85,7 +72,6 @@ public class BoardManager : MonoBehaviourPunCallbacks
             }
         }
     }
-
 
     public void PlaceDiceOnGrid(int diceNumber, int x, int y, Player placingPlayer)
     {
@@ -120,24 +106,6 @@ public class BoardManager : MonoBehaviourPunCallbacks
         UpdateTileUI(x, y);
     }
 
-    // --- 버그 3 수정을 위한 RPC 로직 추가 ---
-    public void ClearUsedDiceViaRPC(List<CompletedYeokInfo> yeoksToClear)
-    {
-        List<int> positionsToClearX = new List<int>();
-        List<int> positionsToClearY = new List<int>();
-
-        foreach (var yeokInfo in yeoksToClear)
-        {
-            foreach (var pos in yeokInfo.DicePositions)
-            {
-                positionsToClearX.Add(pos.x);
-                positionsToClearY.Add(pos.y);
-            }
-        }
-        // 모든 클라이언트에게 어떤 좌표의 주사위를 지울지 방송
-        photonView.RPC("ClearUsedDiceRPC", RpcTarget.All, positionsToClearX.ToArray(), positionsToClearY.ToArray());
-    }
-
     /// <summary>
     /// '소환' 시 GameManager가 호출. 그리드의 모든 줄을 스캔하여 완성된 역 목록을 반환합니다.
     /// </summary>
@@ -153,44 +121,37 @@ public class BoardManager : MonoBehaviourPunCallbacks
             List<int> diceNumbersInLine = new List<int>();
             List<Vector2Int> dicePositionsInLine = new List<Vector2Int>();
 
-            // 현재 줄에 있는 주사위의 숫자와 좌표를 모두 수집합니다.
             for (int x = 0; x < 6; x++)
             {
                 if (gridData[x, y] != null)
                 {
                     diceNumbersInLine.Add(gridData[x, y].DiceNumber);
-                    dicePositionsInLine.Add(new Vector2Int(x, y)); // 좌표 수집
+                    dicePositionsInLine.Add(new Vector2Int(x, y));
                 }
             }
 
-            // 주사위가 2개 미만이면 역을 만들 수 없으므로 다음 줄로 넘어갑니다.
             if (diceNumbersInLine.Count < 2) continue;
 
-            // 높은 등급의 역부터 순서대로 판별합니다.
             foreach (var yeok in yeokOrder)
             {
                 if (IsYeokMatch(yeok, diceNumbersInLine.ToArray()))
                 {
-                    // 점수를 계산합니다.
                     int baseScore = GetBaseScore(yeok);
                     int bonusScore = (diceNumbersInLine.Count >= 4) ? CalculateBonusScore(diceNumbersInLine.ToArray()) : 0;
 
-                    // RPC 전송 오류를 막기 위해 조합 문자열을 생성합니다.
-                    diceNumbersInLine.Sort(); // "1-1-3"처럼 일관된 표시를 위해 정렬
+                    diceNumbersInLine.Sort();
                     string comboStr = string.Join("-", diceNumbersInLine);
 
-                    // 완성된 역 정보를 리스트에 추가합니다.
                     foundYeoks.Add(new CompletedYeokInfo
                     {
                         YeokType = yeok,
-                        TotalScore = baseScore + bonusScore,
+                        BaseScore = baseScore,
+                        BonusScore = bonusScore,
                         LineIndex = y,
                         IsHorizontal = true,
                         DicePositions = dicePositionsInLine,
                         CombinationString = comboStr
                     });
-
-                    // 해당 줄에서 가장 높은 등급의 역을 찾았으므로, 다음 줄로 넘어갑니다.
                     break;
                 }
             }
@@ -226,9 +187,10 @@ public class BoardManager : MonoBehaviourPunCallbacks
                     foundYeoks.Add(new CompletedYeokInfo
                     {
                         YeokType = yeok,
-                        TotalScore = baseScore + bonusScore,
+                        BaseScore = baseScore,
+                        BonusScore = bonusScore,
                         LineIndex = x,
-                        IsHorizontal = false,
+                        IsHorizontal = false, // <-- 버그 수정된 부분
                         DicePositions = dicePositionsInLine,
                         CombinationString = comboStr
                     });
@@ -236,68 +198,7 @@ public class BoardManager : MonoBehaviourPunCallbacks
                 }
             }
         }
-
         return foundYeoks;
-    }
-
-    [PunRPC]
-    public void PlaceDiceRPC(int diceNumber, int x, int y, Player placingPlayer)
-    {
-        // 이미 주사위가 있거나, 손에 없는 주사위면 리턴
-        if (gridData[x, y] != null) return;
-
-        // 해당 턴의 플레이어인지 확인 (선택사항이지만 더 안전함)
-        if (placingPlayer != GameManager.Instance.GetCurrentPlayer()) return;
-
-        // 로컬 플레이어의 손에서만 주사위를 실제로 사용
-        if (placingPlayer.IsLocal)
-        {
-            if (currentTurnPlayerHand != null && currentTurnPlayerHand.HasDice(diceNumber))
-            {
-                currentTurnPlayerHand.UseDice(diceNumber);
-            }
-            else
-            {
-                // 손에 없는 주사위를 놓으려고 하면 RPC를 받았더라도 무시
-                return;
-            }
-        }
-
-        gridData[x, y] = new DiceData { DiceNumber = diceNumber };
-        UpdateTileUI(x, y);
-    }
-
-    // 주사위 회수를 위한 RPC (PlaceDiceRPC를 참고하여 직접 만들어보세요!)
-    [PunRPC]
-    public void PickUpDiceRPC(int x, int y)
-    {
-        if (gridData[x, y] == null) return;
-
-        DiceData diceToReclaim = gridData[x, y];
-
-        // 주사위를 회수하는 플레이어가 로컬 플레이어일 때만 손으로 가져옴
-        if (GameManager.Instance.GetCurrentPlayer().IsLocal)
-        {
-            currentTurnPlayerHand.ReclaimDice(diceToReclaim.DiceNumber);
-        }
-
-        gridData[x, y] = null;
-        UpdateTileUI(x, y);
-    }
-
-    [PunRPC]
-    private void ClearUsedDiceRPC(int[] xCoords, int[] yCoords)
-    {
-        for (int i = 0; i < xCoords.Length; i++)
-        {
-            int x = xCoords[i];
-            int y = yCoords[i];
-            if (gridData[x, y] != null)
-            {
-                gridData[x, y] = null;
-                UpdateTileUI(x, y);
-            }
-        }
     }
 
     private void UpdateTileUI(int x, int y)

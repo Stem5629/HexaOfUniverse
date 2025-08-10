@@ -6,7 +6,8 @@ using UnityEngine;
 public class CompletedYeokInfo
 {
     public BaseTreeEnum YeokType;
-    public int TotalScore;
+    public int BaseScore;
+    public int BonusScore;
     public int LineIndex; // 0~5 (가로 또는 세로줄의 인덱스)
     public bool IsHorizontal; // 가로줄인가? (false면 세로줄)
     public System.Collections.Generic.List<Vector2Int> DicePositions; // 역을 구성한 주사위들의 좌표
