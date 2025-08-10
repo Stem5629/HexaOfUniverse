@@ -144,53 +144,64 @@ public class BoardManager : MonoBehaviourPunCallbacks
     public List<CompletedYeokInfo> ScanAllLines()
     {
         List<CompletedYeokInfo> foundYeoks = new List<CompletedYeokInfo>();
+        // 높은 등급의 역부터 판별하기 위해 역순으로 정렬합니다.
         var yeokOrder = System.Enum.GetValues(typeof(BaseTreeEnum)).Cast<BaseTreeEnum>().Reverse().ToArray();
 
-        // 가로줄(Row) 스캔
+        // --- 가로줄(Row) 스캔 ---
         for (int y = 0; y < 6; y++)
         {
             List<int> diceNumbersInLine = new List<int>();
             List<Vector2Int> dicePositionsInLine = new List<Vector2Int>();
+
+            // 현재 줄에 있는 주사위의 숫자와 좌표를 모두 수집합니다.
             for (int x = 0; x < 6; x++)
             {
                 if (gridData[x, y] != null)
                 {
                     diceNumbersInLine.Add(gridData[x, y].DiceNumber);
-                    dicePositionsInLine.Add(new Vector2Int(x, y)); // <-- 이 줄을 추가하세요!
+                    dicePositionsInLine.Add(new Vector2Int(x, y)); // 좌표 수집
                 }
             }
 
-            // --- 디버그 로그 4: 스캔 시 각 라인의 주사위 상태 확인 ---
-            if (diceNumbersInLine.Count > 0)
-                Debug.Log($"[BM] 스캔 중... 가로 {y}줄 발견된 주사위: [{string.Join(", ", diceNumbersInLine)}]");
-
+            // 주사위가 2개 미만이면 역을 만들 수 없으므로 다음 줄로 넘어갑니다.
             if (diceNumbersInLine.Count < 2) continue;
 
+            // 높은 등급의 역부터 순서대로 판별합니다.
             foreach (var yeok in yeokOrder)
             {
                 if (IsYeokMatch(yeok, diceNumbersInLine.ToArray()))
                 {
+                    // 점수를 계산합니다.
                     int baseScore = GetBaseScore(yeok);
                     int bonusScore = (diceNumbersInLine.Count >= 4) ? CalculateBonusScore(diceNumbersInLine.ToArray()) : 0;
 
+                    // RPC 전송 오류를 막기 위해 조합 문자열을 생성합니다.
+                    diceNumbersInLine.Sort(); // "1-1-3"처럼 일관된 표시를 위해 정렬
+                    string comboStr = string.Join("-", diceNumbersInLine);
+
+                    // 완성된 역 정보를 리스트에 추가합니다.
                     foundYeoks.Add(new CompletedYeokInfo
                     {
                         YeokType = yeok,
                         TotalScore = baseScore + bonusScore,
                         LineIndex = y,
                         IsHorizontal = true,
-                        DicePositions = dicePositionsInLine
+                        DicePositions = dicePositionsInLine,
+                        CombinationString = comboStr
                     });
+
+                    // 해당 줄에서 가장 높은 등급의 역을 찾았으므로, 다음 줄로 넘어갑니다.
                     break;
                 }
             }
         }
 
-        // 세로줄(Column) 스캔
+        // --- 세로줄(Column) 스캔 ---
         for (int x = 0; x < 6; x++)
         {
             List<int> diceNumbersInLine = new List<int>();
             List<Vector2Int> dicePositionsInLine = new List<Vector2Int>();
+
             for (int y = 0; y < 6; y++)
             {
                 if (gridData[x, y] != null)
@@ -209,13 +220,17 @@ public class BoardManager : MonoBehaviourPunCallbacks
                     int baseScore = GetBaseScore(yeok);
                     int bonusScore = (diceNumbersInLine.Count >= 4) ? CalculateBonusScore(diceNumbersInLine.ToArray()) : 0;
 
+                    diceNumbersInLine.Sort();
+                    string comboStr = string.Join("-", diceNumbersInLine);
+
                     foundYeoks.Add(new CompletedYeokInfo
                     {
                         YeokType = yeok,
                         TotalScore = baseScore + bonusScore,
                         LineIndex = x,
                         IsHorizontal = false,
-                        DicePositions = dicePositionsInLine
+                        DicePositions = dicePositionsInLine,
+                        CombinationString = comboStr
                     });
                     break;
                 }

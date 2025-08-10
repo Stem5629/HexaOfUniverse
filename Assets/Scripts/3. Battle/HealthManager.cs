@@ -3,12 +3,16 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
+using TMPro;
 
 public class HealthManager : MonoBehaviourPunCallbacks
 {
     [Header("UI 참조")]
     [SerializeField] private Slider myHpSlider;
     [SerializeField] private Slider versusHpSlider;
+    [SerializeField] private TextMeshProUGUI myHpText;
+    [SerializeField] private TextMeshProUGUI versusHpText;
+
 
     [Header("설정")]
     [SerializeField] private int maxHp = 100;
@@ -27,9 +31,12 @@ public class HealthManager : MonoBehaviourPunCallbacks
     // Start에서는 내 플레이어 정보만 설정하고, 상대방은 기다립니다.
     void Start()
     {
+        myHpSlider.maxValue = maxHp;
+        versusHpSlider.maxValue = maxHp;
+
         myPlayer = PhotonNetwork.LocalPlayer;
         InitializeMyHP();
-        TrySetupPlayers(); // 플레이어 설정 시도
+        TrySetupPlayers();
     }
 
     // 새로운 플레이어가 방에 들어올 때마다 Photon이 자동으로 호출하는 함수
@@ -93,15 +100,19 @@ public class HealthManager : MonoBehaviourPunCallbacks
     private void UpdateAllHpBars()
     {
         // 내 HP 업데이트
-        if (myPlayer != null && myPlayer.CustomProperties.TryGetValue("HP", out object myHp))
+        if (myPlayer != null && myPlayer.CustomProperties.TryGetValue("HP", out object myHpObj))
         {
-            myHpSlider.value = (int)myHp;
+            int myCurrentHp = (int)myHpObj;
+            myHpSlider.value = myCurrentHp;
+            myHpText.text = $"{myCurrentHp} / {maxHp}"; // <-- 텍스트 업데이트 추가
         }
 
         // 상대 HP 업데이트
-        if (versusPlayer != null && versusPlayer.CustomProperties.TryGetValue("HP", out object versusHp))
+        if (versusPlayer != null && versusPlayer.CustomProperties.TryGetValue("HP", out object versusHpObj))
         {
-            versusHpSlider.value = (int)versusHp;
+            int versusCurrentHp = (int)versusHpObj;
+            versusHpSlider.value = versusCurrentHp;
+            versusHpText.text = $"{versusCurrentHp} / {maxHp}"; // <-- 텍스트 업데이트 추가
         }
     }
 }

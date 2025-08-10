@@ -23,6 +23,7 @@ public class DraftManager : MonoBehaviourPunCallbacks // MonoBehaviour 대신 Phot
     private int currentRound = 1;
     private int turnStep = 0; // 현재 드래프트 순서 (0부터 시작)
     private bool isMyTurn = false;
+    private bool isP1StartingThisRound;
     private int picksRequired = 0;
 
     // 라운드별 규칙 미리 정의
@@ -97,10 +98,11 @@ public class DraftManager : MonoBehaviourPunCallbacks // MonoBehaviour 대신 Phot
     /// <summary>
     /// 모든 클라이언트에서 라운드에 맞는 드래프트 규칙을 설정하기 위한 함수
     /// </summary>
-    public void InitializeForRound(int round)
+    public void InitializeForRound(int round, bool isP1Starting)
     {
         currentRound = round;
         turnStep = 0;
+        this.isP1StartingThisRound = isP1Starting;
 
         // --- 아래 두 줄을 추가하세요 ---
         System.Array.Clear(myDiceCount, 0, myDiceCount.Length);
@@ -215,10 +217,14 @@ public class DraftManager : MonoBehaviourPunCallbacks // MonoBehaviour 대신 Phot
 
     private void SetTurn()
     {
-        // 턴 순서(짝/홀수)에 따라 턴 주인을 결정
-        // (P1->P2->P1->P2...)
-        bool isP1Turn = (turnStep % 2 == 0);
-        isMyTurn = (PhotonNetwork.IsMasterClient == isP1Turn);
+        bool isStarterPlayerTurn = (turnStep % 2 == 0);
+
+        // 2. 내가 이번 라운드의 선공 플레이어인지 확인합니다.
+        bool amITheStarter = (PhotonNetwork.IsMasterClient == isP1StartingThisRound);
+
+        // 3. 두 조건이 일치하면 내 턴입니다.
+        // (선공 차례인데 내가 선공일 경우) OR (후공 차례인데 내가 후공일 경우)
+        isMyTurn = (isStarterPlayerTurn == amITheStarter);
 
         picksRequired = currentPickOrder[turnStep];
         if (isMyTurn)

@@ -10,4 +10,5 @@ public class UnitData
     public int HP;
     public int InitialDamage;
     public int ContinuousDamage;
+    public string CombinationString;
 }
