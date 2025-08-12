@@ -46,20 +46,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitSpritesByYeok:
-  - {fileID: 21300000, guid: 79e82db88230c1a488a15abb23e88e83, type: 3}
-  - {fileID: 21300000, guid: 79e82db88230c1a488a15abb23e88e83, type: 3}
-  - {fileID: 21300000, guid: 79e82db88230c1a488a15abb23e88e83, type: 3}
-  - {fileID: 21300000, guid: 1a98296a288945a44aa3d120f65cf21b, type: 3}
-  - {fileID: 21300000, guid: 1a98296a288945a44aa3d120f65cf21b, type: 3}
-  - {fileID: 21300000, guid: 1a98296a288945a44aa3d120f65cf21b, type: 3}
-  - {fileID: 21300000, guid: 19c97ea231ddebd448fdd18029456dba, type: 3}
-  - {fileID: 21300000, guid: 19c97ea231ddebd448fdd18029456dba, type: 3}
-  - {fileID: 21300000, guid: 19c97ea231ddebd448fdd18029456dba, type: 3}
-  - {fileID: 21300000, guid: a71232e5783790645abb059d5057f305, type: 3}
-  - {fileID: 21300000, guid: a71232e5783790645abb059d5057f305, type: 3}
-  - {fileID: 21300000, guid: b99cecf1d65ce9c4797b98c727f5bb74, type: 3}
-  - {fileID: 21300000, guid: b99cecf1d65ce9c4797b98c727f5bb74, type: 3}
-  - {fileID: 21300000, guid: 230650665b618934aaf6f966aa93acf7, type: 3}
+  - {fileID: 21300000, guid: de454c0da57f00b48b5a3671bed2986f, type: 3}
+  - {fileID: 21300000, guid: 091a29620c8f1504e844dc1ada789a13, type: 3}
+  - {fileID: 21300000, guid: 94a9f2e4e5e2a9145996f28b6661b160, type: 3}
+  - {fileID: 21300000, guid: 4f751b8bd70f91d4e98026e3fa48d263, type: 3}
+  - {fileID: 21300000, guid: fad6231d0d02f3f44a5eb0bf49c44d02, type: 3}
+  - {fileID: 21300000, guid: 51808b26125674e488210538220c23d3, type: 3}
+  - {fileID: 21300000, guid: 900224596d909d543834d56ca2dca330, type: 3}
+  - {fileID: 21300000, guid: 4d577f4dbfea8e04295ae82e39ac7f5d, type: 3}
+  - {fileID: 21300000, guid: 9d184cc2c7d15f248b738448ea20bb99, type: 3}
+  - {fileID: 21300000, guid: 7e4f30bf85afd044f9fcdee48b63f7e0, type: 3}
+  - {fileID: 21300000, guid: e5fe81d066a08ac4a914398e1485b3ce, type: 3}
+  - {fileID: 21300000, guid: f796e57eb1cbd9041b76211d6418f9e3, type: 3}
+  - {fileID: 21300000, guid: 572c637687710e34e9ce4963a9623b27, type: 3}
+  - {fileID: 21300000, guid: 0c2f8f3a1dfa1f94a9a083c9459edd01, type: 3}
   myColor: {r: 1, g: 0, b: 0, a: 1}
   versusColor: {r: 0, g: 0, b: 1, a: 1}
   infoPanel: {fileID: 0}

@@ -1582,7 +1582,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a71232e5783790645abb059d5057f305, type: 3}
   - {fileID: 21300000, guid: b99cecf1d65ce9c4797b98c727f5bb74, type: 3}
   - {fileID: 21300000, guid: 230650665b618934aaf6f966aa93acf7, type: 3}
-  emptyTileSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  emptyTileSprite: {fileID: 21300000, guid: 77b2ec3cbb925ca4d9e8790a09b3e6d4, type: 3}
 --- !u!114 &223908880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3573,6 +3573,8 @@ MonoBehaviour:
   versusHpSlider: {fileID: 623872684}
   myHpText: {fileID: 1777696823}
   versusHpText: {fileID: 1415161276}
+  myNicknameText: {fileID: 165086250}
+  versusNicknameText: {fileID: 1207886997}
   maxHp: 1000
 --- !u!114 &524140957
 MonoBehaviour:

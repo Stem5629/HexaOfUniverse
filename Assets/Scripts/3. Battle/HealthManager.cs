@@ -13,6 +13,9 @@ public class HealthManager : MonoBehaviourPunCallbacks
     [SerializeField] private TextMeshProUGUI myHpText;
     [SerializeField] private TextMeshProUGUI versusHpText;
 
+    // --- 아래 두 줄을 추가하세요 ---
+    [SerializeField] private TextMeshProUGUI myNicknameText;
+    [SerializeField] private TextMeshProUGUI versusNicknameText;
 
     [Header("설정")]
     [SerializeField] private int maxHp = 1000;
@@ -60,6 +63,15 @@ public class HealthManager : MonoBehaviourPunCallbacks
         // 2명이 모두 찼으므로, 상대방 플레이어를 할당
         myPlayer = PhotonNetwork.LocalPlayer;
         versusPlayer = PhotonNetwork.PlayerListOthers[0];
+
+        if (myNicknameText != null)
+        {
+            myNicknameText.text = myPlayer.NickName;
+        }
+        if (versusNicknameText != null)
+        {
+            versusNicknameText.text = versusPlayer.NickName;
+        }
 
         Debug.Log("플레이어 설정 완료! 내 플레이어: " + myPlayer.NickName + ", 상대: " + versusPlayer.NickName);
         UpdateAllHpBars();
@@ -119,7 +131,7 @@ public class HealthManager : MonoBehaviourPunCallbacks
         {
             int myCurrentHp = (int)myHpObj;
             myHpSlider.value = myCurrentHp;
-            myHpText.text = $"{myCurrentHp} / {maxHp}"; // <-- 텍스트 업데이트 추가
+            myHpText.text = $"{myCurrentHp} / {maxHp}"; // 닉네임 부분 삭제
         }
 
         // 상대 HP 업데이트
@@ -127,7 +139,7 @@ public class HealthManager : MonoBehaviourPunCallbacks
         {
             int versusCurrentHp = (int)versusHpObj;
             versusHpSlider.value = versusCurrentHp;
-            versusHpText.text = $"{versusCurrentHp} / {maxHp}"; // <-- 텍스트 업데이트 추가
+            versusHpText.text = $"{versusCurrentHp} / {maxHp}"; // 닉네임 부분 삭제
         }
     }
 }

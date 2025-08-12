@@ -218,22 +218,22 @@ public class DraftManager : MonoBehaviourPunCallbacks // MonoBehaviour 대신 Phot
     private void SetTurn()
     {
         bool isStarterPlayerTurn = (turnStep % 2 == 0);
-
-        // 2. 내가 이번 라운드의 선공 플레이어인지 확인합니다.
         bool amITheStarter = (PhotonNetwork.IsMasterClient == isP1StartingThisRound);
-
-        // 3. 두 조건이 일치하면 내 턴입니다.
-        // (선공 차례인데 내가 선공일 경우) OR (후공 차례인데 내가 후공일 경우)
         isMyTurn = (isStarterPlayerTurn == amITheStarter);
 
         picksRequired = currentPickOrder[turnStep];
+
+        // 현재 턴인 플레이어와 상대 플레이어의 닉네임을 가져옵니다.
+        string myNick = PhotonNetwork.LocalPlayer.NickName;
+        string versusNick = PhotonNetwork.PlayerListOthers.Length > 0 ? PhotonNetwork.PlayerListOthers[0].NickName : "상대방";
+
         if (isMyTurn)
         {
-            turnIndicatorText.text = $"<color=red>My Turn</color> ({picksRequired}개 선택)";
+            turnIndicatorText.text = $"<color=red>{myNick}</color>의 턴 ({picksRequired}개 선택)";
         }
         else
         {
-            turnIndicatorText.text = $"<color=blue>Versus Turn</color>";
+            turnIndicatorText.text = $"<color=blue>{versusNick}</color>의 턴";
         }
     }
 }

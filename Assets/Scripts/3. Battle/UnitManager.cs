@@ -235,15 +235,45 @@ public class UnitManager : MonoBehaviourPunCallbacks
     public void ApplyContinuousDamage()
     {
         if (!PhotonNetwork.IsMasterClient) return;
+
+        // 1. 각 플레이어가 입을 총 데미지를 계산할 변수를 준비합니다.
+        int totalDamageToP1 = 0; // 마스터 클라이언트(P1)가 입을 데미지
+        int totalDamageToP2 = 0; // 다른 클라이언트(P2)가 입을 데미지
+
+        Player player1 = PhotonNetwork.MasterClient;
+        Player player2 = PhotonNetwork.PlayerListOthers.Length > 0 ? PhotonNetwork.PlayerListOthers[0] : null;
+
+        if (player2 == null) return; // 상대가 없으면 실행 중지
+
+        // 2. 보드의 모든 유닛을 순회하며 데미지를 '계산'만 합니다.
         foreach (var entry in unitDataOnBoard)
         {
             UnitData unit = entry.Value;
-            Player targetPlayer = (unit.Owner == PhotonNetwork.MasterClient) ? PhotonNetwork.PlayerListOthers[0] : PhotonNetwork.MasterClient;
+            if (unit.ContinuousDamage <= 0) continue;
 
-            if (unit.ContinuousDamage > 0)
+            if (unit.Owner == player1)
             {
-                HealthManager.Instance.DealDamage(targetPlayer, unit.ContinuousDamage);
+                // P1의 유닛은 P2에게 데미지를 줍니다.
+                totalDamageToP2 += unit.ContinuousDamage;
             }
+            else if (unit.Owner == player2)
+            {
+                // P2의 유닛은 P1에게 데미지를 줍니다.
+                totalDamageToP1 += unit.ContinuousDamage;
+            }
+        }
+
+        // 3. 계산이 모두 끝난 후, 계산된 총합 데미지를 '적용'합니다.
+        if (totalDamageToP1 > 0)
+        {
+            Debug.Log($"[지속 데미지] {player1.NickName}에게 {totalDamageToP1} 데미지 적용");
+            HealthManager.Instance.DealDamage(player1, totalDamageToP1);
+        }
+
+        if (totalDamageToP2 > 0)
+        {
+            Debug.Log($"[지속 데미지] {player2.NickName}에게 {totalDamageToP2} 데미지 적용");
+            HealthManager.Instance.DealDamage(player2, totalDamageToP2);
         }
     }
 

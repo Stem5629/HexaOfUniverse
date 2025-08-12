@@ -267,9 +267,30 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (p1Lost || p2Lost)
         {
-            if (p1Lost && p2Lost) winner = null;
-            else if (p1Lost) winner = player2;
-            else if (p2Lost) winner = player1;
+            if (p1Lost && p2Lost) // 1. 둘 다 패배한 경우
+            {
+                // HP가 더 낮은 쪽이 패배합니다.
+                if (p1Hp < p2Hp)
+                {
+                    winner = player2; // P1의 HP가 더 낮으므로 P2가 승리
+                }
+                else if (p2Hp < p1Hp)
+                {
+                    winner = player1; // P2의 HP가 더 낮으므로 P1이 승리
+                }
+                else // p1Hp == p2Hp
+                {
+                    winner = null; // HP가 정확히 같다면 무승부
+                }
+            }
+            else if (p1Lost) // 2. P1만 패배한 경우
+            {
+                winner = player2;
+            }
+            else // 3. P2만 패배한 경우
+            {
+                winner = player1;
+            }
 
             photonView.RPC("ChangeStateRPC", RpcTarget.All, (int)GameState.GameOver, -1);
             yield break;
