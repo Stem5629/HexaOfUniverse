@@ -28,9 +28,6 @@ public class UnitManager : MonoBehaviourPunCallbacks
     private GameObject[] perimeterSlots;
     private Dictionary<GameObject, UnitData> unitDataOnBoard = new Dictionary<GameObject, UnitData>();
 
-    /// <summary>
-    /// GameManager가 호출하여 전장 슬롯을 설정하고 클릭 가능하게 만드는 초기화 함수
-    /// </summary>
     public void Initialize(GameObject[] slots)
     {
         this.perimeterSlots = slots;
@@ -47,9 +44,6 @@ public class UnitManager : MonoBehaviourPunCallbacks
         }
     }
 
-    /// <summary>
-    /// GameManager가 호출. 모든 클라이언트에게 유닛을 소환하라는 RPC 명령을 보냅니다.
-    /// </summary>
     public void SummonUnitsViaRPC(List<CompletedYeokInfo> yeoks, Player owner)
     {
         int[] yeokTypes = new int[yeoks.Count];
@@ -72,12 +66,57 @@ public class UnitManager : MonoBehaviourPunCallbacks
         photonView.RPC("SummonUnitsRPC", RpcTarget.All, owner, yeokTypes, lineIndices, isHorizontals, combinationStrings, baseScores, bonusScores);
     }
 
-    /// <summary>
-    /// [RPC] 모든 클라이언트에서 실행되어 실제로 유닛을 소환하는 함수
-    /// </summary>
     [PunRPC]
     private void SummonUnitsRPC(Player owner, int[] yeokTypes, int[] lineIndices, bool[] isHorizontals, string[] combinationStrings, int[] baseScores, int[] bonusScores)
     {
+        // --- 1. 마스터 클라이언트만 이번 턴에 발생할 모든 피해량을 미리 계산합니다. ---
+        if (PhotonNetwork.IsMasterClient)
+        {
+            int totalDamageToPlayer = 0;
+            Player targetPlayer = null;
+            foreach (Player p in PhotonNetwork.PlayerList)
+            {
+                if (p != owner)
+                {
+                    targetPlayer = p;
+                    break;
+                }
+            }
+
+            if (targetPlayer != null)
+            {
+                // 실제 보드가 아닌, 계산을 위한 가상 보드를 만듭니다.
+                var simulatedBoard = new Dictionary<GameObject, UnitData>(unitDataOnBoard);
+
+                for (int i = 0; i < yeokTypes.Length; i++)
+                {
+                    CompletedYeokInfo yeokInfo = new CompletedYeokInfo
+                    {
+                        YeokType = (BaseTreeEnum)yeokTypes[i],
+                        LineIndex = lineIndices[i],
+                        IsHorizontal = isHorizontals[i],
+                        CombinationString = combinationStrings[i],
+                        BaseScore = baseScores[i],
+                        BonusScore = bonusScores[i]
+                    };
+
+                    int[] slotIndices = GetPerimeterIndices(yeokInfo);
+
+                    // 두 번의 소환 시뮬레이션을 통해 발생할 데미지를 계산하고 누적합니다.
+                    totalDamageToPlayer += CalculatePlacementDamage(CreateUnitDataFromYeok(yeokInfo, owner), perimeterSlots[slotIndices[0]], simulatedBoard);
+                    totalDamageToPlayer += CalculatePlacementDamage(CreateUnitDataFromYeok(yeokInfo, owner), perimeterSlots[slotIndices[1]], simulatedBoard);
+                }
+
+                // 계산이 모두 끝난 후, 합산된 총 데미지를 단 한 번만 적용합니다.
+                if (totalDamageToPlayer > 0)
+                {
+                    Debug.Log($"[최종 데미지 적용] 대상: {targetPlayer.NickName}, 총 데미지: {totalDamageToPlayer}");
+                    HealthManager.Instance.DealDamage(targetPlayer, totalDamageToPlayer);
+                }
+            }
+        }
+
+        // --- 2. 모든 클라이언트에서 실제 유닛 배치 및 전투를 동일하게 실행합니다. ---
         for (int i = 0; i < yeokTypes.Length; i++)
         {
             CompletedYeokInfo yeokInfo = new CompletedYeokInfo
@@ -98,7 +137,43 @@ public class UnitManager : MonoBehaviourPunCallbacks
     }
 
     /// <summary>
-    /// 지정된 슬롯에 유닛 배치를 시도합니다. (빈 슬롯이면 데미지, 적 유닛이 있으면 전투)
+    /// 유닛 하나가 배치될 때 발생할 데미지를 '계산'만 하고, 가상 보드를 업데이트합니다. (마스터 클라이언트 전용)
+    /// </summary>
+    private int CalculatePlacementDamage(UnitData attacker, GameObject slot, Dictionary<GameObject, UnitData> board)
+    {
+        int damageToPlayer = 0;
+        if (board.TryGetValue(slot, out UnitData defender))
+        {
+            if (defender.Owner != attacker.Owner)
+            {
+                defender.HP -= attacker.InitialDamage;
+                if (defender.HP <= 0)
+                {
+                    // a >= b 인 경우
+                    if (defender.HP < 0)
+                    {
+                        // a > b (공격자 승리), 오버킬 데미지 계산
+                        damageToPlayer = -defender.HP;
+                        board[slot] = attacker; // 가상 보드에서 유닛 교체
+                    }
+                    else // defender.HP == 0
+                    {
+                        // a = b (무승부), 둘 다 파괴
+                        board.Remove(slot); // 가상 보드에서 방어 유닛 제거
+                    }
+                }
+            }
+        }
+        else
+        {
+            damageToPlayer = attacker.InitialDamage;
+            board[slot] = attacker;
+        }
+        return damageToPlayer;
+    }
+
+    /// <summary>
+    /// 지정된 슬롯에 유닛 배치를 '시도'합니다. (실제 데이터 변경)
     /// </summary>
     private void AttemptToPlaceUnit(UnitData attackerData, GameObject targetSlot)
     {
@@ -109,67 +184,57 @@ public class UnitManager : MonoBehaviourPunCallbacks
                 ResolveCombat(attackerData, defenderData, targetSlot);
             }
         }
-        else // 슬롯이 비어있는 경우
+        else
         {
-            // 마스터 클라이언트만 데미지 계산 및 전송을 담당합니다.
-            if (PhotonNetwork.IsMasterClient)
-            {
-                // 공격 유닛의 주인을 기준으로 상대방(타겟)을 찾습니다.
-                Player targetPlayer = null;
-                foreach (Player p in PhotonNetwork.PlayerList)
-                {
-                    if (p != attackerData.Owner)
-                    {
-                        targetPlayer = p;
-                        break;
-                    }
-                }
-
-                // 타겟이 존재하면, 공격 유닛의 '초기 데미지'를 입힙니다.
-                if (targetPlayer != null)
-                {
-                    HealthManager.Instance.DealDamage(targetPlayer, attackerData.InitialDamage);
-                }
-            }
-
-            // 모든 클라이언트에서 유닛을 배치합니다.
             PlaceUnit(attackerData, targetSlot);
         }
     }
 
+    /// <summary>
+    /// 실제 유닛 전투를 처리하고 모든 클라이언트에게 결과를 보여줍니다.
+    /// </summary>
     private void ResolveCombat(UnitData attacker, UnitData defender, GameObject defenderSlot)
     {
-        int damageDealt = attacker.InitialDamage;
-        defender.HP -= damageDealt;
+        defender.HP -= attacker.InitialDamage;
 
-        if (defender.HP <= 0)
+        if (defender.HP <= 0) // 방어 유닛이 파괴되거나 무승부인 경우
         {
+            // 방어 유닛은 항상 보드에서 제거됩니다.
             unitDataOnBoard.Remove(defenderSlot);
-            int overkillDamage = -defender.HP;
-            if (overkillDamage > 0 && PhotonNetwork.IsMasterClient)
+
+            if (defender.HP < 0) // 1. a > b (공격 유닛 승리)
             {
-                HealthManager.Instance.DealDamage(defender.Owner, overkillDamage);
+                // 공격 유닛이 빈 자리를 차지합니다. (오버킬 데미지는 마스터가 이미 계산했음)
+                PlaceUnit(attacker, defenderSlot);
             }
-            PlaceUnit(attacker, defenderSlot);
+            else // 2. a = b (둘 다 파괴)
+            {
+                // 공격 유닛을 배치하지 않고, 슬롯을 비워줍니다.
+                int slotIndex = System.Array.IndexOf(perimeterSlots, defenderSlot);
+                if (slotIndex > -1)
+                {
+                    photonView.RPC("ClearSlotDisplayRPC", RpcTarget.All, slotIndex);
+                }
+            }
+        }
+        else // 3. a < b (방어 유닛 승리)
+        {
+            // 공격 유닛은 배치되지 않고 소멸합니다.
+            Debug.Log($"전투: 공격 실패! 방어 유닛의 남은 HP: {defender.HP}");
         }
     }
 
     private void PlaceUnit(UnitData unit, GameObject slot)
     {
         unitDataOnBoard[slot] = unit;
-
         Image slotImage = slot.GetComponent<Image>();
         slotImage.sprite = unitSpritesByYeok[(int)unit.YeokType];
         slotImage.color = (unit.Owner.IsLocal) ? myColor : versusColor;
     }
 
-    /// <summary>
-    /// GameManager가 라운드 종료 시 호출. 모든 유닛의 지속 데미지를 처리합니다.
-    /// </summary>
     public void ApplyContinuousDamage()
     {
         if (!PhotonNetwork.IsMasterClient) return;
-
         foreach (var entry in unitDataOnBoard)
         {
             UnitData unit = entry.Value;
@@ -187,7 +252,6 @@ public class UnitManager : MonoBehaviourPunCallbacks
         if (unitDataOnBoard.TryGetValue(clickedSlot, out UnitData unitData))
         {
             infoPanel.SetActive(true);
-
             unitTreeText.text = unitData.YeokType.ToString();
             treeCombinationText.text = unitData.CombinationString;
             hpText.text = $"HP : {unitData.HP}";
@@ -203,14 +267,11 @@ public class UnitManager : MonoBehaviourPunCallbacks
     private UnitData CreateUnitDataFromYeok(CompletedYeokInfo yeok, Player owner)
     {
         UnitData unit = new UnitData { Owner = owner, YeokType = yeok.YeokType };
-
         int baseStat = yeok.BaseScore;
         int continuousStat = yeok.BonusScore;
-
         unit.HP = baseStat;
         unit.InitialDamage = baseStat;
         unit.ContinuousDamage = continuousStat;
-
         unit.CombinationString = yeok.CombinationString;
         return unit;
     }

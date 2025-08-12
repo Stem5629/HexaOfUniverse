@@ -54,6 +54,8 @@ MonoBehaviour:
   - SyncPickUpDice
   - SyncPlaceDice
   - ClearAllDiceRPC
+  - ClearSlotDisplayRPC
+  - UpdateTimerRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

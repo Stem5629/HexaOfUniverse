@@ -15,7 +15,7 @@ public class HealthManager : MonoBehaviourPunCallbacks
 
 
     [Header("설정")]
-    [SerializeField] private int maxHp = 100;
+    [SerializeField] private int maxHp = 1000;
 
     public static HealthManager Instance;
 
@@ -76,15 +76,30 @@ public class HealthManager : MonoBehaviourPunCallbacks
 
     public void DealDamage(Player targetPlayer, int damage)
     {
-        // 상대방이 아직 설정되지 않았으면(게임 시작 전) 데미지 처리 안 함
-        if (targetPlayer == null) return;
+        if (targetPlayer == null || damage <= 0) return;
 
-        int currentHp = (int)targetPlayer.CustomProperties["HP"];
-        int newHp = Mathf.Max(0, currentHp - damage);
+        if (targetPlayer.CustomProperties.TryGetValue("HP", out object hpObj))
+        {
+            int currentHp = (int)hpObj;
+            int newHp = Mathf.Max(0, currentHp - damage);
 
-        Hashtable newProperties = new Hashtable();
-        newProperties["HP"] = newHp;
-        targetPlayer.SetCustomProperties(newProperties);
+            // --- 수정된 부분 ---
+
+            // 1. 업데이트할 새로운 HP 값을 준비합니다.
+            Hashtable newProperties = new Hashtable();
+            newProperties["HP"] = newHp;
+
+            // 2. "현재 서버의 HP가 내가 알고 있는 currentHp일 때만 업데이트 해줘" 라는 조건을 준비합니다.
+            Hashtable expectedProperties = new Hashtable();
+            expectedProperties["HP"] = currentHp;
+
+            // 3. 조건(expectedProperties)을 함께 보내 안전하게 업데이트를 시도합니다.
+            targetPlayer.SetCustomProperties(newProperties, expectedProperties);
+        }
+        else
+        {
+            Debug.LogError($"{targetPlayer.NickName}님의 HP 속성을 찾을 수 없어 데미지를 처리할 수 없습니다.");
+        }
     }
 
     private void InitializeMyHP()

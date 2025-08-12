@@ -3573,7 +3573,7 @@ MonoBehaviour:
   versusHpSlider: {fileID: 623872684}
   myHpText: {fileID: 1777696823}
   versusHpText: {fileID: 1415161276}
-  maxHp: 100
+  maxHp: 1000
 --- !u!114 &524140957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7854,6 +7854,8 @@ MonoBehaviour:
   hpText: {fileID: 1986696253}
   beginDamageText: {fileID: 278816029}
   keepDamageText: {fileID: 221053511}
+  timerText: {fileID: 1875246832}
+  turnTimeLimit: 60
 --- !u!114 &1132444780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12848,7 +12850,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB0A8\uC740 \uC2DC\uAC04 99:99"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ca32e11571e80f145a3e711538de0e3b, type: 2}
   m_sharedMaterial: {fileID: -5262620149659355753, guid: ca32e11571e80f145a3e711538de0e3b, type: 2}

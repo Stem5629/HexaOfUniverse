@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField] private TextMeshProUGUI hpText;
     [SerializeField] private TextMeshProUGUI beginDamageText;
     [SerializeField] private TextMeshProUGUI keepDamageText;
+    [SerializeField] private TextMeshProUGUI timerText;
+
+    [Header("게임 규칙 설정")]
+    [SerializeField] private float turnTimeLimit = 60f;
 
     // --- 참조 변수 ---
     private UnitManager unitManager;
@@ -44,6 +48,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private Player winner;
     private int currentRound = 1;
     private int? selectedDiceNumber = null; // 현재 손패에서 선택한 주사위 눈
+    private Coroutine turnTimerCoroutine;
 
     // --- 싱글톤 ---
     public static GameManager Instance;
@@ -170,6 +175,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     private void ChangeStateRPC(int newStateIndex, int newRound = -1)
     {
+        if (turnTimerCoroutine != null)
+        {
+            StopCoroutine(turnTimerCoroutine);
+            turnTimerCoroutine = null;
+        }
+
         if (newRound != -1)
         {
             this.currentRound = newRound;
@@ -183,6 +194,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             case GameState.Draft:
                 roundIndicatorText.text = $"Round {currentRound}";
                 turnIndicatorText.text = "드래프트 진행 중...";
+                timerText.text = "";
                 summonButton.gameObject.SetActive(false);
                 draftManager.gameObject.SetActive(true);
                 bool isP1Starting = (currentRound % 2 == 1);
@@ -227,6 +239,13 @@ public class GameManager : MonoBehaviourPunCallbacks
         boardManager.currentTurnPlayerHand = currentPlayer.IsLocal ? myHand : null;
         summonButton.gameObject.SetActive(true);
         summonButton.interactable = currentPlayer.IsLocal;
+
+        // --- 아래 타이머 시작 코드를 추가합니다 ---
+        // 마스터 클라이언트만 타이머를 시작하고, RPC로 모든 클라이언트에게 시간을 동기화합니다.
+        if (PhotonNetwork.IsMasterClient)
+        {
+            StartTurnTimer();
+        }
     }
 
     public Player GetCurrentPlayer()
@@ -382,6 +401,46 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (x == 0) return 12 + (y - 1);
         if (x == 7) return 18 + (y - 1);
         return -1;
+    }
+
+    private void StartTurnTimer()
+    {
+        // 이전에 실행되던 타이머가 있다면 중지시킵니다.
+        if (turnTimerCoroutine != null)
+        {
+            StopCoroutine(turnTimerCoroutine);
+        }
+        // 새로운 타이머 코루틴을 시작합니다.
+        turnTimerCoroutine = StartCoroutine(TurnTimerCoroutine());
+    }
+
+    private IEnumerator TurnTimerCoroutine()
+    {
+        float remainingTime = turnTimeLimit;
+        while (remainingTime > 0)
+        {
+            // 모든 클라이언트에게 남은 시간을 동기화하여 UI를 업데이트하도록 명령합니다.
+            photonView.RPC("UpdateTimerRPC", RpcTarget.All, remainingTime);
+
+            yield return new WaitForSeconds(1.0f);
+            remainingTime--;
+        }
+
+        // 시간이 0이 되면 턴을 강제로 종료합니다.
+        Debug.Log($"{currentPlayer.NickName}님의 턴 시간이 초과되었습니다.");
+        photonView.RPC("UpdateTimerRPC", RpcTarget.All, 0f); // UI를 0으로 맞춤
+
+        // 현재 턴인 플레이어가 강제로 '소환' 버튼을 누른 것처럼 처리합니다.
+        photonView.RPC("FinishTurnRPC", RpcTarget.MasterClient, currentPlayer);
+    }
+
+    [PunRPC]
+    private void UpdateTimerRPC(float time)
+    {
+        // 초를 분:초 형식의 문자열로 변환합니다. (예: 60 -> 01:00)
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time % 60);
+        timerText.text = $"{minutes:00}:{seconds:00}";
     }
     #endregion
 }
