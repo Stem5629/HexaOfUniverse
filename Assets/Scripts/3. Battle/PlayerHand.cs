@@ -12,11 +12,19 @@ public class PlayerHand : MonoBehaviour
 
     void Start()
     {
-        // 6개의 각 버튼에, 클릭 시 GameManager의 함수를 호출하도록 이벤트를 연결합니다.
         for (int i = 0; i < diceButtons.Length; i++)
         {
-            int diceNumber = i; // 클로저 문제 방지를 위해 인덱스 복사
-            diceButtons[i].onClick.AddListener(() => GameManager.Instance.SelectDiceFromHand(diceNumber));
+            int diceNumber = i;
+
+            // 튜토리얼 매니저가 있으면 튜토리얼 매니저에, 없으면 게임 매니저에 연결합니다.
+            if (TutorialManager.Instance != null)
+            {
+                diceButtons[i].onClick.AddListener(() => TutorialManager.Instance.OnDiceSelectedFromHand(diceNumber));
+            }
+            else
+            {
+                diceButtons[i].onClick.AddListener(() => GameManager.Instance.SelectDiceFromHand(diceNumber));
+            }
         }
     }
 
@@ -41,6 +49,11 @@ public class PlayerHand : MonoBehaviour
         UpdateUI();
     }
 
+    public int GetDiceCount(int diceNumber)
+    {
+        return diceCounts[diceNumber];
+    }
+
     private void UpdateUI()
     {
         for (int i = 0; i < diceCounts.Length; i++)
@@ -49,5 +62,24 @@ public class PlayerHand : MonoBehaviour
             // 주사위가 없으면 버튼을 누를 수 없게 비활성화
             diceButtons[i].interactable = diceCounts[i] > 0;
         }
+    }
+
+    public void ClearAllDice()
+    {
+        for (int i = 0; i < diceCounts.Length; i++)
+        {
+            diceCounts[i] = 0;
+        }
+        UpdateUI();
+    }
+
+    public int GetTotalDiceCount()
+    {
+        int total = 0;
+        for (int i = 0; i < diceCounts.Length; i++)
+        {
+            total += diceCounts[i];
+        }
+        return total;
     }
 }

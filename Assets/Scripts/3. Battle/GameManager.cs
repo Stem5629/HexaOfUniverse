@@ -74,6 +74,45 @@ public class GameManager : MonoBehaviourPunCallbacks
         TrySetupPlayers();
     }
 
+    /// <summary>
+    /// 다른 플레이어가 방을 나갔을 때 Photon에 의해 자동으로 호출되는 콜백 함수입니다.
+    /// </summary>
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        base.OnPlayerLeftRoom(otherPlayer); // 기본 클래스의 함수를 먼저 호출해주는 것이 좋습니다.
+
+        Debug.Log($"{otherPlayer.NickName}님이 퇴장했습니다. 게임을 종료합니다.");
+
+        // 게임이 이미 끝난 상태(GameOver)라면 아무것도 하지 않습니다.
+        if (currentState == GameState.GameOver)
+        {
+            return;
+        }
+
+        // 상대방이 나갔으므로, 남아있는 '나'를 승리자로 설정합니다.
+        winner = PhotonNetwork.LocalPlayer;
+
+        // UI에 상대방이 나갔음을 즉시 표시합니다.
+        turnIndicatorText.text = "상대방이 나갔습니다. 당신의 승리입니다!";
+        if (turnTimerCoroutine != null) StopCoroutine(turnTimerCoroutine);
+        timerText.text = "";
+
+
+        // 게임 오버 상태로 전환하여 결과창으로 이동시킵니다.
+        // 마스터 클라이언트만 상태 변경을 요청하도록 하여 중복 호출을 방지합니다.
+        if (PhotonNetwork.IsMasterClient)
+        {
+            // 플레이어가 메시지를 읽을 수 있도록 2초 정도 딜레이를 줍니다.
+            StartCoroutine(EndGameAfterDelay());
+        }
+    }
+
+    private IEnumerator EndGameAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+        photonView.RPC("ChangeStateRPC", RpcTarget.All, (int)GameState.GameOver, -1);
+    }
+
     private void TrySetupPlayers()
     {
         if (PhotonNetwork.PlayerList.Length < 2) return;
@@ -221,16 +260,41 @@ public class GameManager : MonoBehaviourPunCallbacks
             case GameState.GameOver:
                 summonButton.gameObject.SetActive(false);
                 draftManager.gameObject.SetActive(false);
-                if (winner == null)
+
+                // --- 이 부분을 추가하여 결과 데이터를 기록합니다 ---
+                if (PhotonNetwork.IsMasterClient) // 한 번만 기록되도록 마스터 클라이언트만 실행
                 {
-                    turnIndicatorText.text = "무승부!";
+                    // 모든 클라이언트에게 결과 데이터를 채우고 씬을 로드하라는 RPC를 보냅니다.
+                    photonView.RPC("PrepareAndLoadResultSceneRPC", RpcTarget.All, winner != null ? winner.ActorNumber : -1);
                 }
-                else
-                {
-                    turnIndicatorText.text = $"{winner.NickName}님의 승리!";
-                }
-                break;
+                break; // 기존 break는 유지
         }
+    }
+
+    [PunRPC]
+    private void PrepareAndLoadResultSceneRPC(int winnerActorNumber)
+    {
+        Player localPlayer = PhotonNetwork.LocalPlayer;
+        Player opponent = PhotonNetwork.PlayerListOthers.Length > 0 ? PhotonNetwork.PlayerListOthers[0] : null;
+
+        ResultData.MyNickname = localPlayer.NickName;
+        ResultData.OpponentNickname = opponent != null ? opponent.NickName : "상대방";
+
+        if (winnerActorNumber == -1)
+        {
+            ResultData.Outcome = ResultData.GameOutcome.Draw;
+        }
+        else if (localPlayer.ActorNumber == winnerActorNumber)
+        {
+            ResultData.Outcome = ResultData.GameOutcome.Victory;
+        }
+        else
+        {
+            ResultData.Outcome = ResultData.GameOutcome.Defeat;
+        }
+
+        // 모든 준비가 끝나면 ResultScene을 로드합니다.
+        PhotonNetwork.LoadLevel("ResultScene");
     }
 
     private void SetupTurn()

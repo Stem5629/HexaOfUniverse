@@ -39,7 +39,15 @@ public class BoardManager : MonoBehaviourPunCallbacks
                     int coordX = x;
                     int coordY = y;
                     tile.button.onClick.RemoveAllListeners();
-                    tile.button.onClick.AddListener(() => GameManager.Instance.OnGridTileClicked(coordX, coordY));
+
+                    if (TutorialManager.Instance != null)
+                    {
+                        tile.button.onClick.AddListener(() => TutorialManager.Instance.OnGridTileClicked(coordX, coordY));
+                    }
+                    else
+                    {
+                        tile.button.onClick.AddListener(() => GameManager.Instance.OnGridTileClicked(coordX, coordY));
+                    }
                 }
             }
         }
@@ -50,8 +58,17 @@ public class BoardManager : MonoBehaviourPunCallbacks
     /// </summary>
     public void ClearAllDiceViaRPC()
     {
-        // 모든 클라이언트에게 보드를 비우라고 명령합니다.
-        photonView.RPC("ClearAllDiceRPC", RpcTarget.All);
+        // 만약 온라인 상태(InRoom)라면, 모든 플레이어에게 RPC를 보냅니다.
+        if (Photon.Pun.PhotonNetwork.InRoom)
+        {
+            photonView.RPC("ClearAllDiceRPC", Photon.Pun.RpcTarget.All);
+        }
+        // 아니라면 (오프라인, 즉 튜토리얼 상태라면),
+        else
+        {
+            // 네트워크 통신 없이 내 컴퓨터에서만 함수를 직접 실행합니다.
+            ClearAllDiceRPC();
+        }
     }
 
     [PunRPC]
@@ -78,13 +95,18 @@ public class BoardManager : MonoBehaviourPunCallbacks
         if (gridData[x, y] != null) return;
 
         // 주사위를 놓은 플레이어가 "나"일 경우에만 내 손에서 주사위를 제거합니다.
-        if (placingPlayer.IsLocal)
+        if (placingPlayer == null || placingPlayer.IsLocal)
         {
             if (currentTurnPlayerHand != null && currentTurnPlayerHand.HasDice(diceNumber))
             {
                 currentTurnPlayerHand.UseDice(diceNumber);
             }
-            else return; // 손에 없는 주사위라면 무시
+            else
+            {
+                // 튜토리얼에서는 currentTurnPlayerHand가 null일 수 있으므로
+                // 여기서 return하지 않고 넘어가도록 합니다.
+                if (placingPlayer != null) return;
+            }
         }
 
         gridData[x, y] = new DiceData { DiceNumber = diceNumber };
@@ -96,10 +118,13 @@ public class BoardManager : MonoBehaviourPunCallbacks
         if (gridData[x, y] == null) return;
         DiceData diceToReclaim = gridData[x, y];
 
-        // 주사위를 회수하는 턴의 플레이어가 "나"일 경우에만 내 손으로 주사위를 가져옵니다.
-        if (GameManager.Instance.GetCurrentPlayer().IsLocal)
+        // 튜토리얼 모드이거나, 또는 온라인 게임에서 내 턴일 경우에만 손으로 주사위를 되돌립니다.
+        if (TutorialManager.Instance != null || (GameManager.Instance != null && GameManager.Instance.GetCurrentPlayer().IsLocal))
         {
-            currentTurnPlayerHand.ReclaimDice(diceToReclaim.DiceNumber);
+            if (currentTurnPlayerHand != null)
+            {
+                currentTurnPlayerHand.ReclaimDice(diceToReclaim.DiceNumber);
+            }
         }
 
         gridData[x, y] = null;

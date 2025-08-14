@@ -63,14 +63,25 @@ public class UnitManager : MonoBehaviourPunCallbacks
             bonusScores[i] = yeoks[i].BonusScore;
         }
 
-        photonView.RPC("SummonUnitsRPC", RpcTarget.All, owner, yeokTypes, lineIndices, isHorizontals, combinationStrings, baseScores, bonusScores);
+        // 만약 온라인 상태(InRoom)라면, 모든 플레이어에게 RPC를 보냅니다.
+        if (Photon.Pun.PhotonNetwork.InRoom)
+        {
+            photonView.RPC("SummonUnitsRPC", Photon.Pun.RpcTarget.All, owner, yeokTypes, lineIndices, isHorizontals, combinationStrings, baseScores, bonusScores);
+        }
+        // 아니라면 (오프라인, 즉 튜토리얼 상태라면),
+        else
+        {
+            // 네트워크 통신 없이 내 컴퓨터에서만 함수를 직접 실행합니다.
+            SummonUnitsRPC(owner, yeokTypes, lineIndices, isHorizontals, combinationStrings, baseScores, bonusScores);
+        }
     }
 
     [PunRPC]
     private void SummonUnitsRPC(Player owner, int[] yeokTypes, int[] lineIndices, bool[] isHorizontals, string[] combinationStrings, int[] baseScores, int[] bonusScores)
     {
         // --- 1. 마스터 클라이언트만 이번 턴에 발생할 모든 피해량을 미리 계산합니다. ---
-        if (PhotonNetwork.IsMasterClient)
+        // owner가 null이 아닌, 진짜 온라인 대전일 때만 이 블록을 실행하도록 조건을 추가합니다.
+        if (PhotonNetwork.IsMasterClient && owner != null)
         {
             int totalDamageToPlayer = 0;
             Player targetPlayer = null;
@@ -85,11 +96,12 @@ public class UnitManager : MonoBehaviourPunCallbacks
 
             if (targetPlayer != null)
             {
-                // 실제 보드가 아닌, 계산을 위한 가상 보드를 만듭니다.
                 var simulatedBoard = new Dictionary<GameObject, UnitData>(unitDataOnBoard);
+
 
                 for (int i = 0; i < yeokTypes.Length; i++)
                 {
+                    // 매개변수로 받은 올바른 데이터를 사용하여 yeokInfo를 채웁니다.
                     CompletedYeokInfo yeokInfo = new CompletedYeokInfo
                     {
                         YeokType = (BaseTreeEnum)yeokTypes[i],
@@ -100,14 +112,11 @@ public class UnitManager : MonoBehaviourPunCallbacks
                         BonusScore = bonusScores[i]
                     };
 
-                    int[] slotIndices = GetPerimeterIndices(yeokInfo);
-
-                    // 두 번의 소환 시뮬레이션을 통해 발생할 데미지를 계산하고 누적합니다.
-                    totalDamageToPlayer += CalculatePlacementDamage(CreateUnitDataFromYeok(yeokInfo, owner), perimeterSlots[slotIndices[0]], simulatedBoard);
-                    totalDamageToPlayer += CalculatePlacementDamage(CreateUnitDataFromYeok(yeokInfo, owner), perimeterSlots[slotIndices[1]], simulatedBoard);
+                    // 이제 올바른 공격력을 가진 유닛으로 피해량을 계산합니다.
+                    totalDamageToPlayer += CalculatePlacementDamage(CreateUnitDataFromYeok(yeokInfo, owner), perimeterSlots[GetPerimeterIndices(yeokInfo)[0]], simulatedBoard);
+                    totalDamageToPlayer += CalculatePlacementDamage(CreateUnitDataFromYeok(yeokInfo, owner), perimeterSlots[GetPerimeterIndices(yeokInfo)[1]], simulatedBoard);
                 }
 
-                // 계산이 모두 끝난 후, 합산된 총 데미지를 단 한 번만 적용합니다.
                 if (totalDamageToPlayer > 0)
                 {
                     Debug.Log($"[최종 데미지 적용] 대상: {targetPlayer.NickName}, 총 데미지: {totalDamageToPlayer}");
@@ -229,7 +238,18 @@ public class UnitManager : MonoBehaviourPunCallbacks
         unitDataOnBoard[slot] = unit;
         Image slotImage = slot.GetComponent<Image>();
         slotImage.sprite = unitSpritesByYeok[(int)unit.YeokType];
-        slotImage.color = (unit.Owner.IsLocal) ? myColor : versusColor;
+
+        // 유닛의 주인이 있는지 먼저 확인합니다.
+        if (unit.Owner != null)
+        {
+            // 온라인 대전처럼 주인이 있다면, 기존 로직대로 색상을 정합니다.
+            slotImage.color = (unit.Owner.IsLocal) ? myColor : versusColor;
+        }
+        else
+        {
+            // 주인이 없다면 (튜토리얼), 내 유닛 색상(myColor)으로 기본 설정합니다.
+            slotImage.color = myColor;
+        }
     }
 
     public void ApplyContinuousDamage()
@@ -320,5 +340,27 @@ public class UnitManager : MonoBehaviourPunCallbacks
             indices[1] = 6 + yeokInfo.LineIndex;
         }
         return indices;
+    }
+
+    public void PlaceTutorialEnemyUnit(int slotIndex, BaseTreeEnum yeokType)
+    {
+        GameObject targetSlot = perimeterSlots[slotIndex];
+        if (targetSlot == null) return;
+
+        // 적 유닛 데이터 생성 (주인은 null, 상대방 색상으로 표시)
+        UnitData enemyUnit = new UnitData
+        {
+            Owner = null, // 주인 없음
+            YeokType = yeokType,
+            HP = 1, // 테스트용으로 HP를 1로 설정
+            InitialDamage = 1,
+            ContinuousDamage = 0,
+            CombinationString = "TUTORIAL"
+        };
+
+        unitDataOnBoard[targetSlot] = enemyUnit;
+        Image slotImage = targetSlot.GetComponent<Image>();
+        slotImage.sprite = unitSpritesByYeok[(int)yeokType];
+        slotImage.color = versusColor; // 상대방 색상으로 표시
     }
 }

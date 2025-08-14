@@ -23,7 +23,7 @@ SpriteAtlas:
     platformSettings:
     - serializedVersion: 3
       m_BuildTarget: DefaultTexturePlatform
-      m_MaxTextureSize: 1024
+      m_MaxTextureSize: 8192
       m_ResizeAlgorithm: 0
       m_TextureFormat: -1
       m_TextureCompression: 1
@@ -62,19 +62,27 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 7e4f30bf85afd044f9fcdee48b63f7e0, type: 3}
     - {fileID: 2800000, guid: e5fe81d066a08ac4a914398e1485b3ce, type: 3}
     - {fileID: 2800000, guid: f796e57eb1cbd9041b76211d6418f9e3, type: 3}
+    - {fileID: 2800000, guid: 42be57116eae5074dbb8eaa3152f38c3, type: 3}
+    - {fileID: 2800000, guid: 859cfe56640f40e488fa42f14ea2cede, type: 3}
+    - {fileID: 2800000, guid: 416c919390046434589e986bc4333ced, type: 3}
+    - {fileID: 2800000, guid: bbeedbe57b838d34c9e5412490348e82, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: e5fe81d066a08ac4a914398e1485b3ce, type: 3}
+  - {fileID: 21300000, guid: 42be57116eae5074dbb8eaa3152f38c3, type: 3}
   - {fileID: 21300000, guid: b99cecf1d65ce9c4797b98c727f5bb74, type: 3}
   - {fileID: 21300000, guid: 091a29620c8f1504e844dc1ada789a13, type: 3}
   - {fileID: 21300000, guid: 19c97ea231ddebd448fdd18029456dba, type: 3}
   - {fileID: 21300000, guid: 9d184cc2c7d15f248b738448ea20bb99, type: 3}
+  - {fileID: 21300000, guid: 416c919390046434589e986bc4333ced, type: 3}
   - {fileID: 21300000, guid: 94a9f2e4e5e2a9145996f28b6661b160, type: 3}
   - {fileID: 21300000, guid: a71232e5783790645abb059d5057f305, type: 3}
+  - {fileID: 21300000, guid: bbeedbe57b838d34c9e5412490348e82, type: 3}
   - {fileID: 21300000, guid: 51808b26125674e488210538220c23d3, type: 3}
+  - {fileID: 21300000, guid: 859cfe56640f40e488fa42f14ea2cede, type: 3}
   - {fileID: 21300000, guid: 230650665b618934aaf6f966aa93acf7, type: 3}
   - {fileID: 21300000, guid: 79e82db88230c1a488a15abb23e88e83, type: 3}
   - {fileID: 21300000, guid: 900224596d909d543834d56ca2dca330, type: 3}
@@ -87,13 +95,17 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 7e4f30bf85afd044f9fcdee48b63f7e0, type: 3}
   m_PackedSpriteNamesToIndex:
   - 011
+  - 001
   - Moon
   - 002
   - 3
   - 009
   - 003
+  - 003
   - Star
+  - 004
   - 006
+  - 002
   - Sun
   - 1
   - 007
