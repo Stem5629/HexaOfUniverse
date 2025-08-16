@@ -54,6 +54,15 @@ public class PlayerHand : MonoBehaviour
         return diceCounts[diceNumber];
     }
 
+    public RectTransform GetDiceButtonRect(int diceIndex)
+    {
+        if (diceIndex >= 0 && diceIndex < diceButtons.Length)
+        {
+            return diceButtons[diceIndex].GetComponent<RectTransform>();
+        }
+        return null;
+    }
+
     private void UpdateUI()
     {
         for (int i = 0; i < diceCounts.Length; i++)

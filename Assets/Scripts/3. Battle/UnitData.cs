@@ -11,4 +11,5 @@ public class UnitData
     public int InitialDamage;
     public int ContinuousDamage;
     public string CombinationString;
+    public bool IsTutorialEnemy = false;
 }

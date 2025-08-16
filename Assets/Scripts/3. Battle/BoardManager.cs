@@ -131,6 +131,24 @@ public class BoardManager : MonoBehaviourPunCallbacks
         UpdateTileUI(x, y);
     }
 
+    public GameObject GetTileObjectAt(int x, int y)
+    {
+        if (x >= 0 && x < 6 && y >= 0 && y < 6 && gridTiles[x, y] != null)
+        {
+            return gridTiles[x, y];
+        }
+        return null;
+    }
+
+    public bool IsTileEmpty(int x, int y)
+    {
+        if (x >= 0 && x < 6 && y >= 0 && y < 6)
+        {
+            return gridData[x, y] == null;
+        }
+        return false;
+    }
+
     /// <summary>
     /// '소환' 시 GameManager가 호출. 그리드의 모든 줄을 스캔하여 완성된 역 목록을 반환합니다.
     /// </summary>

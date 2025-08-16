@@ -66,6 +66,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 859cfe56640f40e488fa42f14ea2cede, type: 3}
     - {fileID: 2800000, guid: 416c919390046434589e986bc4333ced, type: 3}
     - {fileID: 2800000, guid: bbeedbe57b838d34c9e5412490348e82, type: 3}
+    - {fileID: 2800000, guid: 6e2dadfa9d66d6540bc30e9eb53672a0, type: 3}
+    - {fileID: 2800000, guid: d6865aa25a5dce14eb99464d5bf46502, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -75,6 +77,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 42be57116eae5074dbb8eaa3152f38c3, type: 3}
   - {fileID: 21300000, guid: b99cecf1d65ce9c4797b98c727f5bb74, type: 3}
   - {fileID: 21300000, guid: 091a29620c8f1504e844dc1ada789a13, type: 3}
+  - {fileID: 21300000, guid: d6865aa25a5dce14eb99464d5bf46502, type: 3}
   - {fileID: 21300000, guid: 19c97ea231ddebd448fdd18029456dba, type: 3}
   - {fileID: 21300000, guid: 9d184cc2c7d15f248b738448ea20bb99, type: 3}
   - {fileID: 21300000, guid: 416c919390046434589e986bc4333ced, type: 3}
@@ -87,6 +90,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 79e82db88230c1a488a15abb23e88e83, type: 3}
   - {fileID: 21300000, guid: 900224596d909d543834d56ca2dca330, type: 3}
   - {fileID: 21300000, guid: 1a98296a288945a44aa3d120f65cf21b, type: 3}
+  - {fileID: 21300000, guid: 6e2dadfa9d66d6540bc30e9eb53672a0, type: 3}
   - {fileID: 21300000, guid: 4f751b8bd70f91d4e98026e3fa48d263, type: 3}
   - {fileID: 21300000, guid: de454c0da57f00b48b5a3671bed2986f, type: 3}
   - {fileID: 21300000, guid: fad6231d0d02f3f44a5eb0bf49c44d02, type: 3}
@@ -98,6 +102,7 @@ SpriteAtlas:
   - 001
   - Moon
   - 002
+  - "\uC81C\uBAA9\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694_-001 (11)"
   - 3
   - 009
   - 003
@@ -110,6 +115,7 @@ SpriteAtlas:
   - 1
   - 007
   - 2
+  - "\uC81C\uBAA9\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694_-001 (9)"
   - 004
   - 001
   - 005
