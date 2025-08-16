@@ -7,49 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
-    // --------------------------------------------------
-    // # 싱글톤 인스턴스
-    // --------------------------------------------------
     public static TutorialManager Instance { get; private set; }
 
-    // --------------------------------------------------
-    // # 튜토리얼 단계 정의
-    // --------------------------------------------------
     public enum TutorialStep
     {
-        Stage1_Setup,
-        Stage1_SelectDice,
-        Stage1_PlaceDice,
-        Stage1_Complete,
-
-        Stage2_Setup,
-        Stage2_WaitForFirstDice,
-        Stage2_HighlightPairLocations,
-        Stage2_WaitForSecondDice,
-        Stage2_Summon,
-        Stage2_Complete,
-
-        Stage3_Setup,
-        Stage3_PlaceForTriple,
-        Stage3_Summon,
-        Stage3_Complete,
-
-        Stage4_Setup,
-        Stage4_Drafting,
-        Stage4_Complete,
-
-        Stage5_Setup,
-        Stage5_DirectDamage_Place,
-        Stage5_DirectDamage_Summon,
-        Stage5_BonusScore_Place,
-        Stage5_BonusScore_Summon,
-        Stage5_Complete
+        Stage1_Setup, Stage1_SelectDice, Stage1_PlaceDice, Stage1_Complete,
+        Stage2_Setup, Stage2_WaitForFirstDice, Stage2_HighlightPairLocations, Stage2_WaitForSecondDice, Stage2_Summon, Stage2_Complete,
+        Stage3_Setup, Stage3_PlaceForTriple, Stage3_Summon, Stage3_Complete,
+        Stage4_Setup, Stage4_Drafting, Stage4_Complete,
+        Stage5_Setup, Stage5_DirectDamage_Place, Stage5_DirectDamage_Summon, Stage5_BonusScore_Place, Stage5_BonusScore_Summon, Stage5_Complete
     }
     public TutorialStep currentStep;
 
-    // --------------------------------------------------
-    // # UI 및 매니저 참조
-    // --------------------------------------------------
     [Header("핵심 매니저 참조")]
     [SerializeField] private PlayerHand playerHand;
     [SerializeField] private BoardManager boardManager;
@@ -75,7 +44,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private List<Image> tutorialDiceImages;
     [SerializeField] private Slider tutorialMyHpBar;
     [SerializeField] private Slider tutorialEnemyHpBar;
-    [SerializeField] private TextMeshProUGUI tutorialEnemyHpText; // 상대 HP 텍스트 참조 추가
+    [SerializeField] private TextMeshProUGUI tutorialEnemyHpText;
     [SerializeField] private GameObject unitInfoPanel;
 
     private int selectedDiceNumber;
@@ -89,9 +58,6 @@ public class TutorialManager : MonoBehaviour
     private List<int> draftedDiceThisStage = new List<int>();
     private Stack<TutorialStep> stepHistory = new Stack<TutorialStep>();
 
-    // --------------------------------------------------
-    // # Unity 라이프사이클
-    // --------------------------------------------------
     void Awake()
     {
         if (Instance == null) { Instance = this; }
@@ -103,18 +69,13 @@ public class TutorialManager : MonoBehaviour
         InitializeManagers();
         InitializeTutorialUI();
         boardManager.currentTurnPlayerHand = this.playerHand;
-
         if (summonButton != null) summonButton.onClick.AddListener(OnSummonButtonClicked);
         if (nextStageButton != null) nextStageButton.onClick.AddListener(OnNextStageButtonClicked);
         if (previousStepButton != null) previousStepButton.onClick.AddListener(OnPreviousStepButtonClicked);
         if (skipButton != null) skipButton.onClick.AddListener(OnSkipTutorialClicked);
-
         GoToStep(TutorialStep.Stage1_Setup, recordHistory: false);
     }
 
-    // --------------------------------------------------
-    // # 튜토리얼 흐름 제어
-    // --------------------------------------------------
     private void GoToStep(TutorialStep nextStep, bool recordHistory = true)
     {
         if (recordHistory && currentStep != nextStep)
@@ -286,9 +247,6 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    // --------------------------------------------------
-    // # 플레이어 입력 처리
-    // --------------------------------------------------
     public void OnDiceSelectedFromHand(int diceNumber)
     {
         selectedDiceNumber = diceNumber;
@@ -391,9 +349,11 @@ public class TutorialManager : MonoBehaviour
     private void OnSummonButtonClicked()
     {
         List<CompletedYeokInfo> yeoks = boardManager.ScanAllLines();
+
+        // --- 수정된 부분: 튜토리얼 전용 함수를 호출합니다 ---
         if (currentStep == TutorialStep.Stage2_Summon || currentStep == TutorialStep.Stage3_Summon)
         {
-            if (yeoks.Count > 0) { unitManager.SummonUnitsViaRPC(yeoks, null); }
+            if (yeoks.Count > 0) { unitManager.SummonUnitsForTutorial(yeoks); }
             boardManager.ClearAllDiceViaRPC();
             if (currentStep == TutorialStep.Stage2_Summon) GoToStep(TutorialStep.Stage2_Complete);
             else if (currentStep == TutorialStep.Stage3_Summon) GoToStep(TutorialStep.Stage3_Complete);
@@ -401,7 +361,7 @@ public class TutorialManager : MonoBehaviour
         else if (currentStep == TutorialStep.Stage5_DirectDamage_Summon)
         {
             int totalDamage = yeoks.Sum(y => y.BaseScore);
-            unitManager.SummonUnitsViaRPC(yeoks, null);
+            if (yeoks.Count > 0) { unitManager.SummonUnitsForTutorial(yeoks); }
             if (tutorialEnemyHpBar != null)
             {
                 tutorialEnemyCurrentHp -= totalDamage;
@@ -418,7 +378,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if (currentStep == TutorialStep.Stage5_BonusScore_Summon)
         {
-            unitManager.SummonUnitsViaRPC(boardManager.ScanAllLines(), null);
+            if (yeoks.Count > 0) { unitManager.SummonUnitsForTutorial(yeoks); }
             if (unitInfoPanel != null) unitInfoPanel.SetActive(true);
             boardManager.ClearAllDiceViaRPC();
             GoToStep(TutorialStep.Stage5_Complete);
@@ -451,9 +411,6 @@ public class TutorialManager : MonoBehaviour
         SceneManager.LoadScene("LobbyScene");
     }
 
-    // --------------------------------------------------
-    // # 헬퍼 함수
-    // --------------------------------------------------
     private void InitializeTutorialUI()
     {
         if (tutorialMyHpBar != null)
@@ -528,20 +485,17 @@ public class TutorialManager : MonoBehaviour
     private void HighlightAllPairLocations(Vector2Int origin)
     {
         HideAllHighlights();
-        // 같은 줄에 놓을 수 있도록 가로, 세로 전체를 검사합니다.
-        // 가로줄 하이라이트
         for (int x = 0; x < 6; x++)
         {
-            if (x == origin.x) continue; // 자기 자신은 제외
+            if (x == origin.x) continue;
             if (boardManager.IsTileEmpty(x, origin.y))
             {
                 HighlightTile(x, origin.y);
             }
         }
-        // 세로줄 하이라이트
         for (int y = 0; y < 6; y++)
         {
-            if (y == origin.y) continue; // 자기 자신은 제외
+            if (y == origin.y) continue;
             if (boardManager.IsTileEmpty(origin.x, y))
             {
                 HighlightTile(origin.x, y);
